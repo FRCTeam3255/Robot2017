@@ -1,7 +1,13 @@
 package org.usfirst.frc.team3255.robot2017;
 
+import org.usfirst.frc.team3255.robot2017.commands.ClimberClimb;
+import org.usfirst.frc.team3255.robot2017.commands.ClimberStop;
+import org.usfirst.frc.team3255.robot2017.commands.CollectorCollect;
+import org.usfirst.frc.team3255.robot2017.commands.CollectorStop;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -28,12 +34,22 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	
 	//create Joysticks
-	public Joystick driverStick = null;
-	public Joystick shooterStick = null;
+	public Joystick driverStick = new Joystick(RobotMap.JOYSTICK_DRIVER);
+	public Joystick shooterStick = new Joystick(RobotMap.JOYSTICK_SHOOTER);
 	
+//	ShooterStick
+	Button S3 = new JoystickButton(shooterStick, 3);
+	Button S4 = new JoystickButton(shooterStick, 4);
+	Button S11 = new JoystickButton(shooterStick, 11);
+	Button S12 = new JoystickButton(shooterStick, 12);
+			
 	public OI(){
-		driverStick = new Joystick(RobotMap.JOYSTICK_DRIVER);
-		shooterStick = new Joystick(RobotMap.JOYSTICK_SHOOTER);
 		
+		//ShooterStick
+		S3.whenPressed(new CollectorCollect());
+		S4.whenPressed(new CollectorStop());
+		S11.whenPressed(new ClimberStop());
+		S12.whenPressed(new ClimberClimb());
+
 	}
 }

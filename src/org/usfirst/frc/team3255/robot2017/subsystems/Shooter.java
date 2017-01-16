@@ -27,7 +27,7 @@ public class Shooter extends Subsystem {
 		rightTalon.setSafetyEnabled(false);
 	}
 	
-	public void setSpeed(double speed) {
+	public void setShooterSpeed(double speed) {
 		leftTalon.set(speed);
 		rightTalon.set(-speed);
 	}

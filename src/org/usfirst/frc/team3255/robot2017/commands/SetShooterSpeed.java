@@ -20,10 +20,12 @@ public class SetShooterSpeed extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     	double rawSpeed = Robot.oi.shooterStick.getRawAxis(RobotMap.SHOOTER_SPEED_AXIS);
+    	// converting axis to motor output
     	double speed = (-rawSpeed + 1) / 2;
     	
-    	Robot.shooter.setSpeed(speed);
+    	Robot.shooter.setShooterSpeed(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
