@@ -22,9 +22,13 @@ public class RobotMap {
 	public static final int CLIMBER_CLIMB_TALON = 8;
 
 	//DigitalInputs
-	public static final int CLIMBER_CLIMB_SWITCH = 0;
-	public static final int CLIMBER_ENABLE_CLIMB_SWITCH = 1;
+	public static final int CLIMBER_ENABLE_CLIMB_SWITCH = 0;
+	public static final int CLIMBER_CLIMB_SWITCH = 1;
 
+	//Encoders
+	public static final int DRIVETRAIN_ENCODER_A= 2;
+	public static final int DRIVETRAIN_ENCODER_B= 3;
+	
 	//Solenoids
 	
 	//Joysticks

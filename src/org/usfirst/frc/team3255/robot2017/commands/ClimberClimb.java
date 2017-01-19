@@ -2,59 +2,31 @@ package org.usfirst.frc.team3255.robot2017.commands;
 
 import org.usfirst.frc.team3255.robot2017.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class ClimberClimb extends Command {
+public class ClimberClimb extends CommandGroup {
 
-	int count = 0;
-	
     public ClimberClimb() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.climber);
-    }
+        // Add Commands here:
+        // e.g. addSequential(new Command1());
+        //      addSequential(new Command2());
+        // these will run in order.
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	count = 0;
-    }
+        // To run multiple commands at the same time,
+        // use addParallel()
+        // e.g. addParallel(new Command1());
+        //      addSequential(new Command2());
+        // Command1 and Command2 will run in parallel.
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	// Keeps motor from running when climber is in reverse configuration
-    	if (Robot.climber.isClimberEnabled()){
-        	Robot.climber.setClimberSpeed(1.0);
-    	}
-    	else{
-        	Robot.climber.setClimberSpeed(0.0);
-    	}
-    	
-    	// Stops motors from running after switch is closed
-    	if(Robot.climber.isClimberSwitchClosed()){
-    		count = (count + 1);
-    	}
-    	else{
-    		count = 0;
-    	}
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-       // TODO Decide count amount.
-    	return (count > 10);
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.climber.setClimberSpeed(0.0);
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	Robot.climber.setClimberSpeed(0.0);
+        // A command group will require all of the subsystems that each member
+        // would require.
+        // e.g. if Command1 requires chassis, and Command2 requires arm,
+        // a CommandGroup containing them would require both the chassis and the
+        // arm.
+    	addSequential(new ClimberCheckEnabled());
+    	addSequential(new ClimberSetSpeed());
     }
 }

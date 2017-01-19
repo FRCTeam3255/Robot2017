@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3255.robot2017;
 
 import org.usfirst.frc.team3255.robot2017.commands.ClimberClimb;
+import org.usfirst.frc.team3255.robot2017.commands.ClimberSetSpeed;
 import org.usfirst.frc.team3255.robot2017.commands.ClimberStop;
 import org.usfirst.frc.team3255.robot2017.commands.CollectorCollect;
 import org.usfirst.frc.team3255.robot2017.commands.CollectorStop;

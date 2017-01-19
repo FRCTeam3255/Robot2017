@@ -5,6 +5,7 @@ import org.usfirst.frc.team3255.robot2017.subsystems.Climber;
 import org.usfirst.frc.team3255.robot2017.subsystems.Collector;
 import org.usfirst.frc.team3255.robot2017.subsystems.Drivetrain;
 import org.usfirst.frc.team3255.robot2017.subsystems.Shooter;
+import org.usfirst.frc.team3255.robot2017.subsystems.Telemetry;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -26,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = null;
 	public static Collector collector = null;
 	public static Climber climber = null;
+	public static Telemetry telemetry = null;
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -41,6 +43,7 @@ public class Robot extends IterativeRobot {
 		shooter = new Shooter();
 		collector = new Collector();
 		climber = new Climber();
+		telemetry = new Telemetry();
 		oi = new OI();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
