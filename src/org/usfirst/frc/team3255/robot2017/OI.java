@@ -5,7 +5,7 @@ import org.usfirst.frc.team3255.robot2017.commands.ClimberSetSpeed;
 import org.usfirst.frc.team3255.robot2017.commands.ClimberStop;
 import org.usfirst.frc.team3255.robot2017.commands.CollectorCollect;
 import org.usfirst.frc.team3255.robot2017.commands.CollectorStop;
-import org.usfirst.frc.team3255.robot2017.commands.ShooterLoad;
+import org.usfirst.frc.team3255.robot2017.commands.ShooterMultiShot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -49,7 +49,7 @@ public class OI {
 	public OI(){
 		
 		//ShooterStick
-		S1.whileHeld(new ShooterLoad());
+		S1.whileHeld(new ShooterMultiShot());
 		S3.whenPressed(new CollectorCollect());
 		S4.whenPressed(new CollectorStop());
 		S11.whenPressed(new ClimberStop());

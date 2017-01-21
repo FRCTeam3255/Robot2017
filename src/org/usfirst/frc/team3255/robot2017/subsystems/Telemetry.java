@@ -28,6 +28,7 @@ public class Telemetry extends Subsystem {
 		
 		//Climber
 		SmartDashboard.putBoolean("Climber Switch Closed", Robot.climber.isClimberSwitchClosed());
+		SmartDashboard.putBoolean("Collector Enabled", Robot.climber.isClimberEnabled());
 	}
 
     public void initDefaultCommand() {

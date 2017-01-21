@@ -13,6 +13,8 @@ public class Collector extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+	boolean collectorOn = false;
+	
 	private CANTalon intakeTalon = null;
 	
 	public Collector() {
@@ -24,6 +26,10 @@ public class Collector extends Subsystem {
 	
 	public void setIntakeSpeed(double speed) {
 		intakeTalon.set(speed);
+	}
+	
+	public boolean isCollectorCollecting(){
+		return collectorOn;
 	}
 
     public void initDefaultCommand() {
