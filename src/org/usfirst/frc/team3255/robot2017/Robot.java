@@ -97,6 +97,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		telemetry.update();
 	}
 
 	@Override
@@ -107,6 +108,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		//TODO add reset encoders to teleopInit
 	}
 
 	/**
@@ -115,6 +117,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		telemetry.update();
 	}
 
 	/**

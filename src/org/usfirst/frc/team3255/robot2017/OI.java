@@ -5,6 +5,7 @@ import org.usfirst.frc.team3255.robot2017.commands.ClimberSetSpeed;
 import org.usfirst.frc.team3255.robot2017.commands.ClimberStop;
 import org.usfirst.frc.team3255.robot2017.commands.CollectorCollect;
 import org.usfirst.frc.team3255.robot2017.commands.CollectorStop;
+import org.usfirst.frc.team3255.robot2017.commands.ShooterLoad;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -39,6 +40,7 @@ public class OI {
 	public Joystick shooterStick = new Joystick(RobotMap.JOYSTICK_SHOOTER);
 	
 //	ShooterStick
+	Button S1 = new JoystickButton(shooterStick, 1);
 	Button S3 = new JoystickButton(shooterStick, 3);
 	Button S4 = new JoystickButton(shooterStick, 4);
 	Button S11 = new JoystickButton(shooterStick, 11);
@@ -47,6 +49,7 @@ public class OI {
 	public OI(){
 		
 		//ShooterStick
+		S1.whileHeld(new ShooterLoad());
 		S3.whenPressed(new CollectorCollect());
 		S4.whenPressed(new CollectorStop());
 		S11.whenPressed(new ClimberStop());

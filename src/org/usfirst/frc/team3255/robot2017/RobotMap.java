@@ -14,8 +14,8 @@ public class RobotMap {
 	public static final int DRIVETRAIN_RIGHT_BACK_TALON = 4;
 	
 
-	public static final int SHOOTER_LEFT_TALON = 5;
-	public static final int SHOOTER_RIGHT_TALON = 6;
+	public static final int SHOOTER_SHOOT_TALON = 5;
+	public static final int SHOOTER_LOAD_TALON = 6;
 	
 	public static final int COLLECTOR_INTAKE_TALON = 7;
 	
@@ -30,6 +30,8 @@ public class RobotMap {
 	public static final int DRIVETRAIN_ENCODER_B= 3;
 	
 	//Solenoids
+	public static final int DRIVETRAIN_SHIFT_UP = 4;
+	public static final int DRIVETRAIN_SHIFT_DOWN = 5;
 	
 	//Joysticks
 	public static final int JOYSTICK_DRIVER = 0;
@@ -42,4 +44,5 @@ public class RobotMap {
 	
 	//PCM
 	public static final int ROBOT_PCM = 0;
+
 }

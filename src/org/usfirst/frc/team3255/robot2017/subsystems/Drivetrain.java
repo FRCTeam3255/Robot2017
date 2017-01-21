@@ -7,6 +7,9 @@ import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -14,6 +17,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Drivetrain extends Subsystem {
 
+	boolean lowGear = true;
+		
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	private CANTalon leftFrontTalon = null;
@@ -22,6 +27,8 @@ public class Drivetrain extends Subsystem {
 	private CANTalon rightBackTalon = null;
 	
 	private Encoder driveEncoder = null;
+	
+	private DoubleSolenoid driveSolenoid = null;
 	
 	private RobotDrive robotDrive = null;
 	
@@ -40,6 +47,9 @@ public class Drivetrain extends Subsystem {
 		//Encoders
 		driveEncoder = new Encoder(RobotMap.DRIVETRAIN_ENCODER_A, RobotMap.DRIVETRAIN_ENCODER_B);
 		
+		//Solenoids
+		driveSolenoid = new DoubleSolenoid(RobotMap.DRIVETRAIN_SHIFT_UP, RobotMap.DRIVETRAIN_SHIFT_DOWN);
+		
 		//RobotDrive
 		robotDrive = new RobotDrive(leftFrontTalon, leftBackTalon, rightFrontTalon, rightBackTalon);
 		
@@ -50,6 +60,7 @@ public class Drivetrain extends Subsystem {
 		robotDrive.arcadeDrive(moveSpeed, rotateSpeed);
 	}
 	
+	//Encoders
 	public void resetEncoders() {
 		leftFrontTalon.setEncPosition(0);
 	}
@@ -57,7 +68,22 @@ public class Drivetrain extends Subsystem {
 	public double getEncoderPosition() {
 		return leftFrontTalon.getEncPosition();
 	}
-
+	
+	//Solenoids
+	public void shiftUp() {
+		driveSolenoid.set(Value.kReverse);
+		lowGear = false;
+	}
+	
+	public void shiftDown() {
+		driveSolenoid.set(Value.kForward);
+		lowGear = true;
+	}
+	
+	public boolean isLowGear() {
+		return lowGear;
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

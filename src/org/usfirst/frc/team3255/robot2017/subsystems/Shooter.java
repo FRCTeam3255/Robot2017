@@ -14,22 +14,29 @@ public class Shooter extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private CANTalon leftTalon = null;
-	private CANTalon rightTalon = null;
+	private CANTalon shootTalon = null;
+	private CANTalon loadTalon = null;
 	
 	
 	public Shooter() {
 		//CANTalons
-		leftTalon = new CANTalon(RobotMap.SHOOTER_LEFT_TALON);
-		rightTalon = new CANTalon(RobotMap.SHOOTER_RIGHT_TALON);
+		shootTalon = new CANTalon(RobotMap.SHOOTER_SHOOT_TALON);
+		loadTalon = new CANTalon(RobotMap.SHOOTER_LOAD_TALON);
 		
-		leftTalon.setSafetyEnabled(false);
-		rightTalon.setSafetyEnabled(false);
+		shootTalon.setSafetyEnabled(false);
+		loadTalon.setSafetyEnabled(false);
 	}
 	
 	public void setShooterSpeed(double speed) {
-		leftTalon.set(speed);
-		rightTalon.set(-speed);
+		shootTalon.set(speed);
+	}
+	
+	public double getShooterSpeed() {
+		return shootTalon.get();
+	}
+	
+	public void setLoadSpeed(double speed) {
+		loadTalon.set(speed);
 	}
 
     public void initDefaultCommand() {
