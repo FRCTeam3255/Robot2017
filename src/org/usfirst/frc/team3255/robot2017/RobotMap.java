@@ -16,14 +16,16 @@ public class RobotMap {
 
 	public static final int SHOOTER_SHOOT_TALON = 5;
 	public static final int SHOOTER_LOAD_TALON = 6;
+	public static final int SHOOTER_HOPPER_TALON = 7;
 	
-	public static final int COLLECTOR_INTAKE_TALON = 7;
+	public static final int COLLECTOR_INTAKE_TALON = 8;
 	
-	public static final int CLIMBER_CLIMB_TALON = 8;
+	public static final int CLIMBER_CLIMB_TALON = 9;
 
 	//DigitalInputs
 	public static final int CLIMBER_ENABLE_CLIMB_SWITCH = 0;
 	public static final int CLIMBER_CLIMB_SWITCH = 1;
+	public static final int SHOOTER_BALL_SWITCH = 2;
 
 	//Encoders
 	public static final int DRIVETRAIN_ENCODER_A= 2;

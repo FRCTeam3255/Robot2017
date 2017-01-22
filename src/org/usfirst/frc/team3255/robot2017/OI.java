@@ -1,11 +1,6 @@
 package org.usfirst.frc.team3255.robot2017;
 
-import org.usfirst.frc.team3255.robot2017.commands.ClimberClimb;
-import org.usfirst.frc.team3255.robot2017.commands.ClimberSetSpeed;
-import org.usfirst.frc.team3255.robot2017.commands.ClimberStop;
-import org.usfirst.frc.team3255.robot2017.commands.CollectorCollect;
-import org.usfirst.frc.team3255.robot2017.commands.CollectorStop;
-import org.usfirst.frc.team3255.robot2017.commands.ShooterMultiShot;
+import org.usfirst.frc.team3255.robot2017.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -41,17 +36,22 @@ public class OI {
 	
 //	ShooterStick
 	Button S1 = new JoystickButton(shooterStick, 1);
+	Button S2 = new JoystickButton(shooterStick, 2);
 	Button S3 = new JoystickButton(shooterStick, 3);
 	Button S4 = new JoystickButton(shooterStick, 4);
+	Button S7 = new JoystickButton(shooterStick, 7);
 	Button S11 = new JoystickButton(shooterStick, 11);
 	Button S12 = new JoystickButton(shooterStick, 12);
 			
 	public OI(){
 		
 		//ShooterStick
-		S1.whileHeld(new ShooterMultiShot());
+		S1.whileHeld(new ShootMulti());
+		S2.whileHeld(new ShootSingle());
 		S3.whenPressed(new CollectorCollect());
 		S4.whenPressed(new CollectorStop());
+		S7.whileHeld(new CollectorReverse());
+		// S10 is shooter lowSpeed while held - see SetShooterSpeed
 		S11.whenPressed(new ClimberStop());
 		S12.whenPressed(new ClimberClimb());
 

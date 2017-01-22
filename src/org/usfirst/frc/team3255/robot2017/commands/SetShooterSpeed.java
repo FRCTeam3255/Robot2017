@@ -20,12 +20,24 @@ public class SetShooterSpeed extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	// Checking to see if button 10 on shooterStick is pressed
+    	boolean isPressed = Robot.oi.shooterStick.getRawButton(10);
     	
     	double rawSpeed = Robot.oi.shooterStick.getRawAxis(RobotMap.SHOOTER_SPEED_AXIS);
     	// converting axis to motor output
-    	double speed = (-rawSpeed + 1) / 2;
+    	double normalizedSpeed = (-rawSpeed + 1) / 2;
     	
-    	Robot.shooter.setShooterSpeed(speed);
+    	//TODO 
+    	double maxHighSpeed = 1.0;
+    	
+    	double maxLowSpeed = 0.6;
+    	
+    	if (isPressed) {
+    		Robot.shooter.setShooterSpeed(maxLowSpeed * normalizedSpeed);
+    	}
+    	else{
+    		Robot.shooter.setShooterSpeed(maxHighSpeed * normalizedSpeed);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
