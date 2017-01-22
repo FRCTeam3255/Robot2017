@@ -21,7 +21,7 @@ public class ShootMulti extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.shooter.setShooterSpeed(1.0);
+    	Robot.shooter.loaderEnable();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +31,7 @@ public class ShootMulti extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.setShooterSpeed(0.0);
+    	Robot.shooter.loaderDisable();
     }
 
     // Called when another command which requires one or more of the same
