@@ -5,9 +5,7 @@ import org.usfirst.frc.team3255.robot2017.commands.DriveArcade;
 
 import com.ctre.CANTalon;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -26,8 +24,6 @@ public class Drivetrain extends Subsystem {
 	private CANTalon rightFrontTalon = null;
 	private CANTalon rightBackTalon = null;
 	
-	private Encoder driveEncoder = null;
-	
 	private DoubleSolenoid driveSolenoid = null;
 	
 	private RobotDrive robotDrive = null;
@@ -43,9 +39,6 @@ public class Drivetrain extends Subsystem {
 		leftBackTalon.setSafetyEnabled(false);
 		rightFrontTalon.setSafetyEnabled(false);
 		rightBackTalon.setSafetyEnabled(false);
-		
-		//Encoders
-		driveEncoder = new Encoder(RobotMap.DRIVETRAIN_ENCODER_A, RobotMap.DRIVETRAIN_ENCODER_B);
 		
 		//Solenoids
 		driveSolenoid = new DoubleSolenoid(RobotMap.DRIVETRAIN_SHIFT_UP, RobotMap.DRIVETRAIN_SHIFT_DOWN);
