@@ -27,7 +27,7 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("Drivetrain Encoder Position", Robot.drivetrain.getEncoderPosition());
 		
 		//Climber
-		SmartDashboard.putBoolean("Climber Switch Closed", Robot.climber.isClimberSwitchClosed());
+		SmartDashboard.putBoolean("Climber Switch Closed", Robot.climber.isTouchpadSwitchClosed());
 		SmartDashboard.putBoolean("Collector Enabled", Robot.climber.isClimberEnabled());
 	}
 

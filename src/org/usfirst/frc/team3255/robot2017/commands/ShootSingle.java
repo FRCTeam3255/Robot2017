@@ -11,7 +11,7 @@ public class ShootSingle extends CommandGroup {
 
     public ShootSingle() {
         // start the loader
-    	addSequential(new LoaderStart());
+    	addSequential(new CollectorShoot());
     	
     	// wait until the ball closes the limit switch in the shooter
     	addSequential(new ShooterCheckBallShot());
@@ -21,17 +21,16 @@ public class ShootSingle extends CommandGroup {
     	addSequential(new DoDelay(loaderDelay));
     	
     	// stop the loader
-    	addSequential(new LoaderStop());
+    	addSequential(new CollectorStop());
     }
     
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.loaderDisable();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    	Robot.collector.stop();
     }
 }

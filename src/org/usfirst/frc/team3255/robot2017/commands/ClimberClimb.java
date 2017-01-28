@@ -1,30 +1,47 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team3255.robot2017.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ClimberClimb extends CommandGroup {
+public class ClimberClimb extends Command {
 
+	int count = 0;
+	
     public ClimberClimb() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.climber);
+    }
 
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    }
 
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-    	addSequential(new ClimberCheckEnabled());
-    	addSequential(new ClimberSetSpeed());
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    	// Keeps motor from running when climber is in reverse configuration
+    	// Stops motors from running after switch is closed	
+    	Robot.climber.forward();
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+    	// stop if climber is not enabled, or the climber switch is closed meaning it's at the top of the rope
+    	return ((Robot.climber.isClimberEnabled() == false) || (Robot.climber.isTouchpadSwitchClosed() == true));
+    }
+
+    // Called once after isFinished returns true
+    protected void end() {
+    	Robot.climber.stop();
+    }
+
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    protected void interrupted() {
+    	end();
     }
 }

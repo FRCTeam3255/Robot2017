@@ -13,22 +13,45 @@ public class Collector extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	boolean collectorOn = false;
+	private boolean collectorOn = false;
 	
 	private CANTalon intakeTalon = null;
+	private CANTalon loadTalon = null;
 	
 	public Collector() {
 		//CANTalons
 		intakeTalon = new CANTalon(RobotMap.COLLECTOR_INTAKE_TALON);
+		loadTalon = new CANTalon(RobotMap.SHOOTER_LOAD_TALON);
 		
 		intakeTalon.setSafetyEnabled(false);
+		loadTalon.setSafetyEnabled(false);
 	}
 	
-	public void setIntakeSpeed(double speed) {
-		intakeTalon.set(speed);
+	public void collect() {
+		intakeTalon.set(1.0);
+		loadTalon.set(1.0);
+		collectorOn = true;
 	}
 	
-	public boolean isCollectorCollecting(){
+	public void reverse() {
+		intakeTalon.set(-1.0);
+		loadTalon.set(0.0);
+		collectorOn = false;
+	}
+	
+	public void stop() {
+		intakeTalon.set(0.0);
+		loadTalon.set(0.0);
+		collectorOn = false;
+	}
+	
+	public void shoot() {
+		intakeTalon.set(1.0);
+		loadTalon.set(-1.0);
+		collectorOn = false;
+	}
+	
+	public boolean isCollectorCollecting() {
 		return collectorOn;
 	}
 

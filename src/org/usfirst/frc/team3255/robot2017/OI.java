@@ -60,12 +60,14 @@ public class OI {
 	public OI(){
 		
 		//ShooterStick
-		S1.whileHeld(new ShootMulti());
+		S1.whenPressed(new CollectorShoot());
+		S1.whenReleased(new CollectorStop());
 		S2.whenPressed(new ShootSingle());
-		S2.whenReleased(new LoaderStop());
+		S2.whenReleased(new CollectorStop());
 		S3.whenPressed(new CollectorCollect());
 		S4.whenPressed(new CollectorStop());
-		S7.whileHeld(new CollectorReverse());
+		S7.whenPressed(new CollectorReverse());
+		S7.whenReleased(new CollectorStop());
 		// S10 is shooter lowSpeed while held - see SetShooterSpeed
 //		S10.whenPressed(new SetShooterSpeed());
 		S11.whenPressed(new ClimberStop());

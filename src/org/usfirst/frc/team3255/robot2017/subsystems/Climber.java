@@ -15,33 +15,45 @@ public class Climber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	//CANTalons
-	private CANTalon climbTalon = null;
+	private CANTalon leftTalon = null;
+	private CANTalon rightTalon = null;
 	
 	// Switches
-	private DigitalInput climberSwitch = null;
-	private DigitalInput climberEnableSwitch = null;
+	private DigitalInput touchpadSwitch = null;
+	private DigitalInput enableSwitch = null;
 	
 	public Climber() {
 		//CANTalons
-		climbTalon = new CANTalon(RobotMap.CLIMBER_CLIMB_TALON);
+		leftTalon = new CANTalon(RobotMap.CLIMBER_LEFT_TALON);
+		rightTalon = new CANTalon(RobotMap.CLIMBER_RIGHT_TALON);
 		
-		climbTalon.setSafetyEnabled(false);
+		leftTalon.setSafetyEnabled(false);
+		rightTalon.setSafetyEnabled(false);	
 		
 		//DigitalInputs
-		climberSwitch = new DigitalInput(RobotMap.CLIMBER_CLIMB_SWITCH);
-		climberEnableSwitch = new DigitalInput(RobotMap.CLIMBER_ENABLE_CLIMB_SWITCH);
+		touchpadSwitch = new DigitalInput(RobotMap.CLIMBER_TOUCHPAD_SWITCH);
+		enableSwitch = new DigitalInput(RobotMap.CLIMBER_ENABLE_SWITCH);
 	}
 	
-	public void setClimberSpeed(double speed) {
-		climbTalon.set(speed);
+	public void forward() {
+		setClimberSpeed(1.0);
 	}
 	
-	public boolean isClimberSwitchClosed() {
-		return climberSwitch.get();
+	public void stop() {
+		setClimberSpeed(0);		
+	}
+	
+	private void setClimberSpeed(double speed) {
+		leftTalon.set(speed);
+		rightTalon.set(-speed);
+	}
+	
+	public boolean isTouchpadSwitchClosed() {
+		return touchpadSwitch.get();
 	}
 	
 	public boolean isClimberEnabled() {
-		return climberEnableSwitch.get();
+		return enableSwitch.get();
 	}
 	
     public void initDefaultCommand() {
