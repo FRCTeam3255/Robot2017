@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.RobotMap;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import com.ctre.CANTalon;
 
@@ -54,6 +55,19 @@ public class Climber extends Subsystem {
 	
 	public boolean isClimberEnabled() {
 		return enableSwitch.get();
+	}
+	
+	//Encoders
+	public void resetEncoders() {
+		leftTalon.setEncPosition(0);
+	}
+	
+	public double getEncoderPosition() {
+		return leftTalon.getEncPosition();
+	}
+	
+	public double getEncoderDistance() {
+		return (getEncoderPosition() / RobotPreferences.climberPulsesPerFoot());
 	}
 	
     public void initDefaultCommand() {

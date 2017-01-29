@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.RobotMap;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 import org.usfirst.frc.team3255.robot2017.commands.DriveArcade;
 
 import com.ctre.CANTalon;
@@ -8,6 +9,7 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -26,6 +28,8 @@ public class Drivetrain extends Subsystem {
 	
 	private DoubleSolenoid driveSolenoid = null;
 	
+	private Encoder driveEncoder = null;
+	
 	private RobotDrive robotDrive = null;
 	
 	public Drivetrain() {
@@ -43,6 +47,9 @@ public class Drivetrain extends Subsystem {
 		//Solenoids
 		driveSolenoid = new DoubleSolenoid(RobotMap.DRIVETRAIN_SHIFT_UP, RobotMap.DRIVETRAIN_SHIFT_DOWN);
 		
+		//Encoders
+		driveEncoder = new Encoder(RobotMap.DRIVETRAIN_ENCODER_A, RobotMap.DRIVETRAIN_ENCODER_B);
+		
 		//RobotDrive
 		robotDrive = new RobotDrive(leftFrontTalon, leftBackTalon, rightFrontTalon, rightBackTalon);
 		
@@ -51,15 +58,6 @@ public class Drivetrain extends Subsystem {
 	
 	public void arcadeDrive(double moveSpeed, double rotateSpeed){
 		robotDrive.arcadeDrive(moveSpeed, rotateSpeed);
-	}
-	
-	//Encoders
-	public void resetEncoders() {
-		leftFrontTalon.setEncPosition(0);
-	}
-	
-	public double getEncoderPosition() {
-		return leftFrontTalon.getEncPosition();
 	}
 	
 	//Solenoids
@@ -75,6 +73,18 @@ public class Drivetrain extends Subsystem {
 	
 	public boolean isLowGear() {
 		return lowGear;
+	}
+	
+	public double getEncoderCount() {
+		return driveEncoder.get();
+	}
+	
+	public void resetEncoderCount() {
+		driveEncoder.reset();
+	}
+	
+	public double getEncoderDistance() {
+		return (getEncoderCount() / RobotPreferences.drivetrainPulsesPerFoot());
 	}
 	
     public void initDefaultCommand() {

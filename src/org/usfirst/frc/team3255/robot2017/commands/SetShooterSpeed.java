@@ -2,6 +2,7 @@ package org.usfirst.frc.team3255.robot2017.commands;
 
 import org.usfirst.frc.team3255.robot2017.Robot;
 import org.usfirst.frc.team3255.robot2017.RobotMap;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -27,10 +28,9 @@ public class SetShooterSpeed extends Command {
     	// converting axis to motor output
     	double normalizedSpeed = (-rawSpeed + 1) / 2;
     	
-    	//TODO 
-    	double maxHighSpeed = 1.0;
+    	double maxHighSpeed = RobotPreferences.shooterMaxHighSpeed();
     	
-    	double maxLowSpeed = 0.6;
+    	double maxLowSpeed = RobotPreferences.shooterMaxLowSpeed();
     	
     	if (isPressed) {
     		Robot.shooter.setShooterSpeed(maxLowSpeed * normalizedSpeed);

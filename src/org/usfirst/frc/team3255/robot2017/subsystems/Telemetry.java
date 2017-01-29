@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
+import org.usfirst.frc.team3255.robot2017.commands.ClimberResetEncoder;
 import org.usfirst.frc.team3255.robot2017.commands.DriveResetEncoder;
 import org.usfirst.frc.team3255.robot2017.commands.TelemetryUpdate;
 import org.usfirst.frc.team3255.robot2017.Robot;
@@ -17,6 +18,7 @@ public class Telemetry extends Subsystem {
 	public Telemetry() {
 		update();
 		SmartDashboard.putData("Drive Reset Encoders", new DriveResetEncoder());
+		SmartDashboard.putData("Climber Reset Encoder", new ClimberResetEncoder());
 	}
 	
 	public void update() {
@@ -24,11 +26,17 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("Shooter Speed", Robot.shooter.getShooterSpeed());
 		
 		//Drivetrain
-		SmartDashboard.putNumber("Drivetrain Encoder Position", Robot.drivetrain.getEncoderPosition());
+		SmartDashboard.putNumber("Drivetrain Encoder Position", Robot.drivetrain.getEncoderCount());
+		SmartDashboard.putNumber("Drivetrain Encoder Distance", Robot.drivetrain.getEncoderDistance());
 		
 		//Climber
 		SmartDashboard.putBoolean("Climber Switch Closed", Robot.climber.isTouchpadSwitchClosed());
-		SmartDashboard.putBoolean("Collector Enabled", Robot.climber.isClimberEnabled());
+		SmartDashboard.putBoolean("Climber Enabled", Robot.climber.isClimberEnabled());
+		SmartDashboard.putNumber("Climber Encoder Position", Robot.climber.getEncoderPosition());
+		SmartDashboard.putNumber("Climber Encoder Distance", Robot.climber.getEncoderDistance());
+		
+		//Collector
+		SmartDashboard.putBoolean("Collector Enabled", Robot.collector.isCollectorCollecting());
 	}
 
     public void initDefaultCommand() {
