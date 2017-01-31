@@ -28,6 +28,7 @@ public class Telemetry extends Subsystem {
 		//Drivetrain
 		SmartDashboard.putNumber("Drivetrain Encoder Position", Robot.drivetrain.getEncoderCount());
 		SmartDashboard.putNumber("Drivetrain Encoder Distance", Robot.drivetrain.getEncoderDistance());
+		SmartDashboard.putBoolean("lowGear", Robot.drivetrain.isLowGear());
 		
 		//Climber
 		SmartDashboard.putBoolean("Climber Switch Closed", Robot.climber.isTouchpadSwitchClosed());
