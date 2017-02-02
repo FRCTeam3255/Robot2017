@@ -4,6 +4,7 @@ package org.usfirst.frc.team3255.robot2017;
 import org.usfirst.frc.team3255.robot2017.subsystems.Climber;
 import org.usfirst.frc.team3255.robot2017.subsystems.Collector;
 import org.usfirst.frc.team3255.robot2017.subsystems.Drivetrain;
+import org.usfirst.frc.team3255.robot2017.subsystems.Navigation;
 import org.usfirst.frc.team3255.robot2017.subsystems.Shooter;
 import org.usfirst.frc.team3255.robot2017.subsystems.Telemetry;
 import org.usfirst.frc.team3255.robot2017.subsystems.Vision;
@@ -29,6 +30,8 @@ public class Robot extends IterativeRobot {
 	public static Collector collector = null;
 	public static Climber climber = null;
 	public static Vision vision = null;
+	public static Navigation navigation = null;
+	
 	public static Telemetry telemetry = null;
 	public static OI oi;
 
@@ -46,6 +49,8 @@ public class Robot extends IterativeRobot {
 		collector = new Collector();
 		climber = new Climber();
 		vision = new Vision();
+		navigation = new Navigation();
+		
 		telemetry = new Telemetry();
 		oi = new OI();
 		// chooser.addObject("My Auto", new MyAutoCommand());

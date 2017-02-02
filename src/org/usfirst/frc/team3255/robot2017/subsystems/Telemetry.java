@@ -2,6 +2,7 @@ package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.commands.ClimberResetEncoder;
 import org.usfirst.frc.team3255.robot2017.commands.DriveResetEncoder;
+import org.usfirst.frc.team3255.robot2017.commands.NavigationResetYaw;
 import org.usfirst.frc.team3255.robot2017.commands.TelemetryUpdate;
 import org.usfirst.frc.team3255.robot2017.Robot;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,6 +20,7 @@ public class Telemetry extends Subsystem {
 		update();
 		SmartDashboard.putData("Drive Reset Encoders", new DriveResetEncoder());
 		SmartDashboard.putData("Climber Reset Encoder", new ClimberResetEncoder());
+		SmartDashboard.putData("Reset Yaw", new NavigationResetYaw());
 	}
 	
 	public void update() {
@@ -38,6 +40,12 @@ public class Telemetry extends Subsystem {
 		
 		//Collector
 		SmartDashboard.putBoolean("Collector Enabled", Robot.collector.isCollectorCollecting());
+		
+		//Navigation
+		SmartDashboard.putNumber("Yaw", Robot.navigation.getYaw());
+		SmartDashboard.putNumber("Pitch", Robot.navigation.getPitch());
+		SmartDashboard.getBoolean("navX Calibrating", Robot.navigation.isCalibrating());
+		SmartDashboard.putNumber("Acceleration", Robot.navigation.getAccel());
 	}
 
     public void initDefaultCommand() {
