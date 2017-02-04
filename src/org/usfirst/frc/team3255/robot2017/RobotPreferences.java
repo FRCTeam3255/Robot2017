@@ -42,4 +42,29 @@ public class RobotPreferences {
 	public static double maxYawSpeed() {
 		return Preferences.getInstance().getDouble("MaxYawSpeed", 0.0);
 	}
+
+	//Drivetrain PID
+	public static double driveDistance() {
+		return Preferences.getInstance().getDouble("Drive Distance", 0.0);
+	}
+	
+	public static double distanceTolerance() {
+		return Preferences.getInstance().getDouble("Distance Tolerance", 0.0);
+	}
+
+	public static double driveDistanceP() {
+		return Preferences.getInstance().getDouble("Drive Distance P", 0.0);
+	}
+
+	public static double driveDistanceI() {
+		return Preferences.getInstance().getDouble("Drive Distance I", 0.0);
+	}
+
+	public static double driveDistanceD() {
+		return Preferences.getInstance().getDouble("Drive Distance D", 0.0);
+	}
+
+	public static double maxMoveSpeed() {
+		return Preferences.getInstance().getDouble("Max Move Speed", 0.7);
+	}
 }

@@ -1,10 +1,14 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.commands.ClimberResetEncoder;
+import org.usfirst.frc.team3255.robot2017.commands.DriveDistance;
 import org.usfirst.frc.team3255.robot2017.commands.DriveResetEncoder;
+import org.usfirst.frc.team3255.robot2017.commands.DriveRotate;
 import org.usfirst.frc.team3255.robot2017.commands.NavigationResetYaw;
 import org.usfirst.frc.team3255.robot2017.commands.TelemetryUpdate;
 import org.usfirst.frc.team3255.robot2017.Robot;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -17,10 +21,11 @@ public class Telemetry extends Subsystem {
     // here. Call these from Commands.
 	
 	public Telemetry() {
-		update();
 		SmartDashboard.putData("Drive Reset Encoders", new DriveResetEncoder());
 		SmartDashboard.putData("Climber Reset Encoder", new ClimberResetEncoder());
 		SmartDashboard.putData("Reset Yaw", new NavigationResetYaw());
+		SmartDashboard.putData("Drive Distance", new DriveDistance(1.0));
+		SmartDashboard.putData("Drive Rotate 180", new DriveRotate(180));
 	}
 	
 	public void update() {
