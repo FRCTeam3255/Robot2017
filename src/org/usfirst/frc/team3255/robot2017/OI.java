@@ -78,6 +78,8 @@ public class OI {
 		D6.whenPressed(new DriveShiftUp());
 		D7.whenPressed(new DriveShiftDown());
 		D8.whenPressed(new DriveShiftUp());
+		D9.whenPressed(new VisionBackCamera());
+		D10.whenPressed(new VisionFrontCamera());
 
 	}
 }
