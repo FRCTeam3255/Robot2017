@@ -84,8 +84,8 @@ public class Vision extends Subsystem implements Runnable {
     			// Put a rectangle on the image
                 Imgproc.rectangle(image, new Point(50, 50), new Point(200, 200),
     					new Scalar(255, 255, 255), 5);
-              } 
-			else{
+            } 
+			else {
             	frontCamera.setFPS(0);		//Sets FPS to 0 for front camera
                 frontSink.setEnabled(false);//Disables stream for front camera 
                 rearCamera.setFPS(30);		//Sets FPS to 30 for rear camera
@@ -95,7 +95,7 @@ public class Vision extends Subsystem implements Runnable {
     			// Put a rectangle on the image
     			Imgproc.rectangle(image, new Point(100, 100), new Point(400, 400),
     					new Scalar(255, 255, 255), 5);
-              }
+            }
 			
 			// ===== Output Steam to Dashboard ===== //
 			outputStream.putFrame(image);	//Puts grabbed frames in output stream "Switcher"

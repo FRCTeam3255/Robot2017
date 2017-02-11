@@ -6,6 +6,7 @@ import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -23,6 +24,9 @@ public class Climber extends Subsystem {
 	private DigitalInput touchpadSwitch = null;
 	private DigitalInput enableSwitch = null;
 	
+	//Encoder
+	private Encoder climberEncoder = null;
+	
 	public Climber() {
 		//CANTalons
 		leftTalon = new CANTalon(RobotMap.CLIMBER_LEFT_TALON);
@@ -34,6 +38,9 @@ public class Climber extends Subsystem {
 		//DigitalInputs
 		touchpadSwitch = new DigitalInput(RobotMap.CLIMBER_TOUCHPAD_SWITCH);
 		enableSwitch = new DigitalInput(RobotMap.CLIMBER_ENABLE_SWITCH);
+		
+		//Encoder
+		climberEncoder = new Encoder(RobotMap.CLIMBER_ENCODER_A, RobotMap.CLIMBER_ENCODER_B);
 	}
 	
 	public void forward() {
@@ -58,16 +65,16 @@ public class Climber extends Subsystem {
 	}
 	
 	//Encoders
-	public void resetEncoders() {
-		leftTalon.setEncPosition(0);
+	public double getEncoderCount() {
+		return climberEncoder.get();
 	}
 	
-	public double getEncoderPosition() {
-		return leftTalon.getEncPosition();
+	public void resetEncoderCount() {
+		climberEncoder.reset();
 	}
 	
 	public double getEncoderDistance() {
-		return (getEncoderPosition() / RobotPreferences.climberPulsesPerFoot());
+		return (getEncoderCount() / RobotPreferences.climberPulsesPerFoot());
 	}
 	
     public void initDefaultCommand() {

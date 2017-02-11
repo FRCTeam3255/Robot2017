@@ -30,6 +30,9 @@ public class RobotMap {
 	//Encoders
 	public static final int DRIVETRAIN_ENCODER_A = 3;
 	public static final int DRIVETRAIN_ENCODER_B = 4;
+
+	public static final int CLIMBER_ENCODER_A = 5;
+	public static final int CLIMBER_ENCODER_B = 6;
 	
 	//Solenoids
 	public static final int DRIVETRAIN_SHIFT_UP = 0;

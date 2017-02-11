@@ -13,13 +13,17 @@ public class RobotPreferences {
 	public static double climberPulsesPerFoot() {
 		return Preferences.getInstance().getDouble("ClimberPulsePerFoot", 1.0);
 	}
+	
+	public static double climbDistance() {
+		return Preferences.getInstance().getDouble("ClimbDistance", 1.0);
+	}
 
 	//Shooter
 	public static double shooterMaxHighSpeed() {
 		return Preferences.getInstance().getDouble("ShooterMaxHighSpeed", 1.0);
 	}
 	public static double shooterMaxLowSpeed() {
-		return Preferences.getInstance().getDouble("ShooterMaxLowSpeed", 0.6);
+		return Preferences.getInstance().getDouble("ShooterMaxLowSpeed", 0.5);
 	}
 	
 	//Navigation
@@ -40,31 +44,31 @@ public class RobotPreferences {
 	}
 
 	public static double maxYawSpeed() {
-		return Preferences.getInstance().getDouble("MaxYawSpeed", 0.0);
+		return Preferences.getInstance().getDouble("MaxYawSpeed", 1.0);
 	}
 
 	//Drivetrain PID
 	public static double driveDistance() {
-		return Preferences.getInstance().getDouble("Drive Distance", 0.0);
+		return Preferences.getInstance().getDouble("DriveDistance", 1.0);
 	}
 	
 	public static double distanceTolerance() {
-		return Preferences.getInstance().getDouble("Distance Tolerance", 0.0);
+		return Preferences.getInstance().getDouble("DistanceTolerance", 0.0);
 	}
 
 	public static double driveDistanceP() {
-		return Preferences.getInstance().getDouble("Drive Distance P", 0.0);
+		return Preferences.getInstance().getDouble("DriveDistanceP", 0.0);
 	}
 
 	public static double driveDistanceI() {
-		return Preferences.getInstance().getDouble("Drive Distance I", 0.0);
+		return Preferences.getInstance().getDouble("DriveDistanceI", 0.0);
 	}
 
 	public static double driveDistanceD() {
-		return Preferences.getInstance().getDouble("Drive Distance D", 0.0);
+		return Preferences.getInstance().getDouble("DriveDistanceD", 0.0);
 	}
 
 	public static double maxMoveSpeed() {
-		return Preferences.getInstance().getDouble("Max Move Speed", 0.7);
+		return Preferences.getInstance().getDouble("MaxMoveSpeed", 1.0);
 	}
 }

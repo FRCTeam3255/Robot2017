@@ -7,8 +7,6 @@ import org.usfirst.frc.team3255.robot2017.commands.DriveRotate;
 import org.usfirst.frc.team3255.robot2017.commands.NavigationResetYaw;
 import org.usfirst.frc.team3255.robot2017.commands.TelemetryUpdate;
 import org.usfirst.frc.team3255.robot2017.Robot;
-import org.usfirst.frc.team3255.robot2017.RobotPreferences;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -21,6 +19,7 @@ public class Telemetry extends Subsystem {
     // here. Call these from Commands.
 	
 	public Telemetry() {
+		//Command buttons
 		SmartDashboard.putData("Drive Reset Encoders", new DriveResetEncoder());
 		SmartDashboard.putData("Climber Reset Encoder", new ClimberResetEncoder());
 		SmartDashboard.putData("Reset Yaw", new NavigationResetYaw());
@@ -29,18 +28,20 @@ public class Telemetry extends Subsystem {
 	}
 	
 	public void update() {
+		//sensor outputs
 		//Shooter
 		SmartDashboard.putNumber("Shooter Speed", Robot.shooter.getShooterSpeed());
+		SmartDashboard.putBoolean("Ball Switch", Robot.shooter.isBallDetected());
 		
 		//Drivetrain
-		SmartDashboard.putNumber("Drivetrain Encoder Position", Robot.drivetrain.getEncoderCount());
+		SmartDashboard.putNumber("Drivetrain Encoder Count", Robot.drivetrain.getEncoderCount());
 		SmartDashboard.putNumber("Drivetrain Encoder Distance", Robot.drivetrain.getEncoderDistance());
 		SmartDashboard.putBoolean("lowGear", Robot.drivetrain.isLowGear());
 		
 		//Climber
 		SmartDashboard.putBoolean("Climber Switch Closed", Robot.climber.isTouchpadSwitchClosed());
 		SmartDashboard.putBoolean("Climber Enabled", Robot.climber.isClimberEnabled());
-		SmartDashboard.putNumber("Climber Encoder Position", Robot.climber.getEncoderPosition());
+		SmartDashboard.putNumber("Climber Encoder Count", Robot.climber.getEncoderCount());
 		SmartDashboard.putNumber("Climber Encoder Distance", Robot.climber.getEncoderDistance());
 		
 		//Collector
@@ -51,6 +52,9 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("Pitch", Robot.navigation.getPitch());
 		SmartDashboard.getBoolean("navX Calibrating", Robot.navigation.isCalibrating());
 		SmartDashboard.putNumber("Acceleration", Robot.navigation.getAccel());
+		
+		
+		
 	}
 
     public void initDefaultCommand() {
