@@ -24,7 +24,10 @@ public class DriveArcade extends Command {
     protected void execute() {
     	double moveSpeed = -Robot.oi.driverStick.getRawAxis(RobotMap.DRIVER_MOVE_AXIS);
     	double rotateSpeed = Robot.oi.driverStick.getRawAxis(RobotMap.DRIVER_ROTATE_AXIS);
-    	
+    	if (Robot.vision.isRearCameraSelected()){
+    		moveSpeed = Robot.oi.driverStick.getRawAxis(RobotMap.DRIVER_MOVE_AXIS);;
+    		rotateSpeed = -Robot.oi.driverStick.getRawAxis(RobotMap.DRIVER_ROTATE_AXIS);
+    	}
     	Robot.drivetrain.arcadeDrive(moveSpeed, rotateSpeed);
     }
 

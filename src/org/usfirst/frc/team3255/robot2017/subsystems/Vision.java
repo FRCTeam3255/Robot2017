@@ -114,5 +114,9 @@ public class Vision extends Subsystem implements Runnable {
 
     public void initDefaultCommand() {
     }
+
+	public boolean isRearCameraSelected() {
+		return (frontCamOn == false);
+	}
 }
 
