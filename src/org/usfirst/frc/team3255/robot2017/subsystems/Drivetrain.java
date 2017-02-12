@@ -62,7 +62,7 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void arcadeDrive(double moveSpeed, double rotateSpeed){
-		robotDrive.arcadeDrive(moveSpeed, rotateSpeed);
+		robotDrive.arcadeDrive(-moveSpeed, rotateSpeed);
 	}
 	
 	//Solenoids

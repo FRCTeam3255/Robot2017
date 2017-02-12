@@ -23,6 +23,8 @@ public class Collector extends Subsystem {
 		intakeTalon = new CANTalon(RobotMap.COLLECTOR_INTAKE_TALON);
 		loadTalon = new CANTalon(RobotMap.COLLECTOR_LOAD_TALON);
 		
+		loadTalon.setInverted(true);
+		
 		intakeTalon.setSafetyEnabled(false);
 		loadTalon.setSafetyEnabled(false);
 	}
