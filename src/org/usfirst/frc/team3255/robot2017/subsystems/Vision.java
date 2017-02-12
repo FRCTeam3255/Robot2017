@@ -15,20 +15,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Vision extends Subsystem implements Runnable {
-
+	
 	private UsbCamera frontCamera = null;
 	private UsbCamera rearCamera = null;
 	
 	private CameraServer cameraServer = null;
 	
-	private CvSink frontSink = null;
-	private CvSink rearSink = null;
+	private CvSink cameraSink = null;
 	
 	private CvSource outputStream = null;
 		
 	private Thread visionThread = null;
 	
-	private boolean frontCamOn = true;
+	private boolean frontCameraSelected = true;
+	private UsbCamera selectedUsbCamera = null;
+
+	public static final int CAMERA_WIDTH = 320;
+	public static final int CAMERA_HEIGHT = 240;
+	public static final int CAMERA_FPS = 30;
 	
 	public Vision() {
 		visionThread = new Thread(this);
@@ -39,84 +43,112 @@ public class Vision extends Subsystem implements Runnable {
 	@Override
 	public void run() {
 		
-		// ===== Initializations ===== //
-		//Creates CameraServer
+		// get an instance of the CameraServer class
 		cameraServer = CameraServer.getInstance();
-		//Starts capture of the frontCamera
-		frontCamera = cameraServer.startAutomaticCapture(0);
-		//Sets resolution and frame rate of frontCamera
-        frontCamera.setResolution(320, 240);
-        frontCamera.setFPS(30);
-        //Starts capture of the rearCamera
-        rearCamera = cameraServer.startAutomaticCapture(1);
-		//Sets resolution and frame rate of rearCamera
-        rearCamera.setResolution(320, 240);
-        rearCamera.setFPS(30);
-        
-        //Creates sinks (steams) and have them get video from their respective cameras
-        frontSink = cameraServer.getVideo(frontCamera);
-        rearSink = cameraServer.getVideo(rearCamera);
-        //Creates outPutStream called "Switcher" which will be put on the dashboard
-        outputStream = cameraServer.putVideo("Switcher", 320, 240);
-        
-        //Creates a mat to hold image
-        Mat image = new Mat();
 
+		// create the front camera
+		frontCamera = new UsbCamera("Front Camera", 0);
+
+		// set the resolution of the front camera
+        frontCamera.setResolution(CAMERA_WIDTH, CAMERA_HEIGHT);
         
-        				////======= Thread Loop ======////
+        // create the rear camera
+        rearCamera = new UsbCamera("Rear Camera", 1);
+
+        // set the resolution of the rear camera
+        rearCamera.setResolution(CAMERA_WIDTH, CAMERA_HEIGHT);
+
+        // set front camera by frames per second (FPS), and set the rear camera FPS to 0
+        frontCamera.setFPS(CAMERA_FPS);
+        rearCamera.setFPS(0);
+
+        // make the front camera the "selected" camera
+        frontCameraSelected = true;
+        selectedUsbCamera = frontCamera;
+        
+        // create a CvSink for sourcing a camera
+        cameraSink = new CvSink("CameraCvSink");
+
+        // set the source for the CvSink to the selected camera
+        cameraSink.setSource(selectedUsbCamera);
+        
+        // create an outPutStream to write video the dashboard
+        // This stream can be viewed on SmartDashboard by adding a "CameraServer Stream Viewer" widget
+        // and setting its "Camera Choice" property to "Selected Camera"
+        outputStream = cameraServer.putVideo("Selected Camera", CAMERA_WIDTH, CAMERA_HEIGHT);
+        
+        // Creates a mat to hold a video image frame
+        Mat image = new Mat();
+        
+        ////======= Thread Loop ======////
 		// This cannot be 'true'. The program will never exit if it is. This
 		// lets the robot stop this thread when restarting robot code or
 		// deploying.
 		while (!Thread.interrupted()) {
+			// check to see if we have to swap cameras
+			if((frontCameraSelected == true) && (selectedUsbCamera != frontCamera)) {
+                cameraSink.setEnabled(false);		// disable the CvSink
+				rearCamera.setFPS(0);				// set FPS to 0 for rear camera
+				frontCamera.setFPS(CAMERA_FPS);		// set FPS for front camera
+                cameraSink.setSource(frontCamera);	// set the CVSink source to the front camera
+                cameraSink.setEnabled(true);		// enable the CvSink
+
+                selectedUsbCamera = frontCamera;
+			}
+			else if((frontCameraSelected == false) && (selectedUsbCamera != rearCamera)) {
+                cameraSink.setEnabled(false);		// disable the CvSink 
+            	frontCamera.setFPS(0);				// set FPS to 0 for front camera
+            	rearCamera.setFPS(CAMERA_FPS);		// set FPS for rear camera
+                cameraSink.setSource(rearCamera);	// set the CvSink source to the rear camera
+                cameraSink.setEnabled(true);		// enable the CvSink
+
+                selectedUsbCamera = rearCamera;
+			}
 			
-			// ===== Camera Selection ==== //
-			// Checks to see if boolean is set to true (changed in selecting methods)
-			/* To avoid bandwidth & stream errors, the current camera
-			FPS must be set to 0 and its sink must be disabled before
-			the new camera's sink is enabled and its FPS is set to 30. */
-			if(frontCamOn){
-				rearCamera.setFPS(0);		//Sets FPS to 0 for rear camera
-                rearSink.setEnabled(false); //Disables stream for rear camera 
-                frontCamera.setFPS(30);		//Sets FPS to 30 for front camera
-                frontSink.setEnabled(true); //Disables stream for rear camera
-                frontSink.grabFrame(image); //Grabs the frames from front camera
-                // ===== Drawing on image ===== //
-    			// Put a rectangle on the image
-                Imgproc.rectangle(image, new Point(50, 50), new Point(200, 200),
-    					new Scalar(255, 255, 255), 5);
+			// grab a frame from the CvSink
+			if(cameraSink.grabFrame(image) == 0) {
+				// Send the output the error.
+				outputStream.notifyError("grabFrame failed: " + cameraSink.getError());
+				// skip the rest of the current iteration
+				continue;
+			}
+
+			// the code below shows how to draw on top of the capture image based on which camera is selected
+            if(frontCameraSelected) {
+            	// write text on the image indicating this is the front camera
+            	Imgproc.putText(image, "Front Camera", new Point(10, CAMERA_HEIGHT / 2), 0, 1.0, new Scalar(255, 255, 255));
+
+            	// draw a rectangle across the top of the image
+                Imgproc.rectangle(image, new Point(10, 10), new Point(CAMERA_WIDTH - 10, 20),
+    					new Scalar(255, 255, 255), 2);
             } 
 			else {
-            	frontCamera.setFPS(0);		//Sets FPS to 0 for front camera
-                frontSink.setEnabled(false);//Disables stream for front camera 
-                rearCamera.setFPS(30);		//Sets FPS to 30 for rear camera
-                rearSink.setEnabled(true);	//Disables stream for rear camera
-                rearSink.grabFrame(image);  //Grabs the frames from rear camera   
-                // ===== Drawing on image ===== //
-    			// Put a rectangle on the image
-    			Imgproc.rectangle(image, new Point(100, 100), new Point(400, 400),
-    					new Scalar(255, 255, 255), 5);
+            	// write text on the image indicating this is the rear camera
+            	Imgproc.putText(image, "Rear Camera", new Point(10, CAMERA_HEIGHT / 2), 0, 1.0, new Scalar(255, 255, 255));
+
+            	// draw a rectangle across the bottom of the image
+    			Imgproc.rectangle(image, new Point(10, CAMERA_HEIGHT - 20), new Point(CAMERA_WIDTH - 10, CAMERA_HEIGHT - 10),
+    					new Scalar(255, 255, 255), 2);
             }
 			
-			// ===== Output Steam to Dashboard ===== //
-			outputStream.putFrame(image);	//Puts grabbed frames in output stream "Switcher"
+			// write the captured image to the output stream
+			outputStream.putFrame(image);
 		}
 	}
 	
 	public void selectForwardCamera() {
-		//Sets frontCamOn boolean to true
-		frontCamOn = true;
+		frontCameraSelected = true;
 	}
 	
 	public void selectRearCamera() {
-		//Sets frontCamOn boolean to false
-		frontCamOn = false;
+		frontCameraSelected = false;
+	}
+	
+	public boolean isRearCameraSelected() {
+		return (frontCameraSelected == false);
 	}
 
-    public void initDefaultCommand() {
-    }
-
-	public boolean isRearCameraSelected() {
-		return (frontCamOn == false);
+	@Override
+	protected void initDefaultCommand() {
 	}
 }
-

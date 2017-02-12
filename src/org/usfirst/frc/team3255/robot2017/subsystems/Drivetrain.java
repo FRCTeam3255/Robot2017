@@ -39,6 +39,11 @@ public class Drivetrain extends Subsystem {
 		rightFrontTalon = new CANTalon(RobotMap.DRIVETRAIN_RIGHT_FRONT_TALON);
 		rightBackTalon = new CANTalon(RobotMap.DRIVETRAIN_RIGHT_BACK_TALON);
 		
+		leftFrontTalon.enableBrakeMode(true);
+		leftBackTalon.enableBrakeMode(true);
+		rightFrontTalon.enableBrakeMode(true);
+		rightBackTalon.enableBrakeMode(true);
+		
 		leftFrontTalon.setSafetyEnabled(false);
 		leftBackTalon.setSafetyEnabled(false);
 		rightFrontTalon.setSafetyEnabled(false);

@@ -23,8 +23,6 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putData("Drive Reset Encoders", new DriveResetEncoder());
 		SmartDashboard.putData("Climber Reset Encoder", new ClimberResetEncoder());
 		SmartDashboard.putData("Reset Yaw", new NavigationResetYaw());
-		SmartDashboard.putData("Drive Distance", new DriveDistance(1.0));
-		SmartDashboard.putData("Drive Rotate 180", new DriveRotate(180));
 	}
 	
 	public void update() {
@@ -52,9 +50,10 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("Pitch", Robot.navigation.getPitch());
 		SmartDashboard.getBoolean("navX Calibrating", Robot.navigation.isCalibrating());
 		SmartDashboard.putNumber("Acceleration", Robot.navigation.getAccel());
-		
-		
-		
+	}
+	
+	public void setAutonomousStatus(String statusText) {
+		SmartDashboard.putString("Automomous Status", statusText);
 	}
 
     public void initDefaultCommand() {

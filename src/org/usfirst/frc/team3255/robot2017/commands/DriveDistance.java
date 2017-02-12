@@ -10,19 +10,21 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveDistance extends Command {
 
 	double distance;
+	String commandName;
 	
-	public DriveDistance(double feet) {
+	public DriveDistance(String name, double feet) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
     	requires(Robot.drivetrainDistancePID);
     	
     	distance = feet;
-    	
+    	commandName = name;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.telemetry.setAutonomousStatus("Starting " + commandName + ": " + distance);
     	Robot.drivetrain.shiftDown();
     	Robot.drivetrain.resetEncoderCount();
     	
@@ -43,6 +45,8 @@ public class DriveDistance extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.telemetry.setAutonomousStatus("Finished " + commandName);
+
     	Robot.drivetrainDistancePID.disable();
     	
     	Robot.drivetrain.arcadeDrive(0.0, 0.0);

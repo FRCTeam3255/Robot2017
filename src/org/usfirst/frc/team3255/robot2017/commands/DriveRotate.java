@@ -10,22 +10,28 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveRotate extends Command {
 
 	double yaw;
+	String commandName;
 	
-    public DriveRotate(double degrees) {
+    public DriveRotate(String name, double degrees) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
     	requires(Robot.navYawPID);
     	
     	yaw = degrees;
+    	commandName = name;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.telemetry.setAutonomousStatus("Starting " + commandName + ": " + yaw);
     	Robot.drivetrain.shiftDown();
-    	Robot.navigation.resetYaw();
     	
+    	Robot.navYawPID.disable();
+
+    	Robot.navigation.resetYaw();
     	Robot.navYawPID.setSetpoint(yaw);
+    	
     	Robot.navYawPID.enable();
     }
 
@@ -41,6 +47,8 @@ public class DriveRotate extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.telemetry.setAutonomousStatus("Finished " + commandName);
+    	
     	Robot.navYawPID.disable();
     	
     	Robot.drivetrain.arcadeDrive(0.0, 0.0);

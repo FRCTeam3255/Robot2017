@@ -14,7 +14,8 @@ public class RobotMap {
 	public static final int DRIVETRAIN_RIGHT_BACK_TALON = 4;
 	
 
-	public static final int SHOOTER_SHOOT_TALON = 5;
+	public static final int SHOOTER_LEFT_TALON = 5;
+	public static final int SHOOTER_RIGHT_TALON = 10;
 	
 	public static final int COLLECTOR_LOAD_TALON = 6;
 	public static final int COLLECTOR_INTAKE_TALON = 7;
@@ -49,5 +50,6 @@ public class RobotMap {
 	
 	//PCM
 	public static final int ROBOT_PCM = 0;
+	
 
 }

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
 import org.usfirst.frc.team3255.robot2017.Robot;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -17,8 +18,7 @@ public class ShootSingle extends CommandGroup {
     	addSequential(new ShooterCheckBallShot());
 
     	// run the loader a little longer to make sure one ball is shot
-    	double loaderDelay = 0.2;
-    	addSequential(new DoDelay(loaderDelay));
+    	addSequential(new DoDelay(RobotPreferences.shooterSwitchDelay()));
     	
     	// stop the loader
     	addSequential(new CollectorStop());

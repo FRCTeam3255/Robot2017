@@ -32,7 +32,18 @@ public class Navigation extends Subsystem {
 	}
 
 	public void resetYaw() {
+		// reset the yaw
 		ahrs.reset();
+		
+		// wait for 1/4 seconds to allow the NavX to reset the yaw
+		try {
+			Thread.sleep(250);
+		}
+		catch (InterruptedException e) {
+		}
+		
+		// make the reset yaw position be the zero yaw position
+		ahrs.zeroYaw();
 	}
 	
 	public boolean isCalibrating() {

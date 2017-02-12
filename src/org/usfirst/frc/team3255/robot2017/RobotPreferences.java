@@ -6,24 +6,28 @@ public class RobotPreferences {
 
 	//Drivetrain
 	public static double drivetrainPulsesPerFoot() {
-		return Preferences.getInstance().getDouble("DrivePulsePerFoot", 1.0);
+		return Preferences.getInstance().getDouble("DrivePulsesPerFoot", 1.0);
 	}
 	
 	//Climber
 	public static double climberPulsesPerFoot() {
-		return Preferences.getInstance().getDouble("ClimberPulsePerFoot", 1.0);
+		return Preferences.getInstance().getDouble("ClimberPulsesPerFoot", 1.0);
 	}
 	
-	public static double climbDistance() {
-		return Preferences.getInstance().getDouble("ClimbDistance", 1.0);
+	public static double climberSwitchDistance() {
+		return Preferences.getInstance().getDouble("ClimberSwitchDistance", 1.0);
 	}
 
 	//Shooter
 	public static double shooterMaxHighSpeed() {
 		return Preferences.getInstance().getDouble("ShooterMaxHighSpeed", 1.0);
 	}
+	
 	public static double shooterMaxLowSpeed() {
 		return Preferences.getInstance().getDouble("ShooterMaxLowSpeed", 0.5);
+	}
+	public static double shooterSwitchDelay() {
+		return Preferences.getInstance().getDouble("ShooterSwitchDelay", 1.0);
 	}
 	
 	//Navigation
@@ -70,5 +74,50 @@ public class RobotPreferences {
 
 	public static double maxMoveSpeed() {
 		return Preferences.getInstance().getDouble("MaxMoveSpeed", 1.0);
+	}
+
+	//Autonomous
+	public static double autoGearD1() {
+		return Preferences.getInstance().getDouble("AutoGearD1", 0.0);
+	}
+
+	public static double autoGearTurn() {
+		return Preferences.getInstance().getDouble("AutoGearTurn", 0.0);
+	}
+
+	public static double autoGearD2() {
+		return Preferences.getInstance().getDouble("AutoGearD2", 0.0);
+	}
+
+	public static double autoGearDelay() {
+		return Preferences.getInstance().getDouble("AutoGearDelay", 0.0);
+	}
+
+	public static double autoShotD1() {
+		return Preferences.getInstance().getDouble("AutoShotD1", 0.0);
+	}
+
+	public static double autoShotTurn() {
+		return Preferences.getInstance().getDouble("AutoShotTurn", 0.0);
+	}
+
+	public static double autoShotD2() {
+		return Preferences.getInstance().getDouble("AutoShotD2", 0.0);
+	}
+	
+	public static double autoShotTime() {
+		return Preferences.getInstance().getDouble("AutoShotTime", 0.0);
+	}
+	
+	public static double autoCrossD1() {
+		return Preferences.getInstance().getDouble("AutoCrossD1", 0.0);
+	}
+	
+	public static double autoCrossTurn() {
+		return Preferences.getInstance().getDouble("AutoCrossTurn", 0.0);
+	}
+	
+	public static double autoCrossD2() {
+		return Preferences.getInstance().getDouble("AutoCrossD2", 0.0);
 	}
 }

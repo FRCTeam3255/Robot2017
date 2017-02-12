@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team3255.robot2017;
 
-import org.usfirst.frc.team3255.robot2017.commands.DriveDistance;
+import org.usfirst.frc.team3255.robot2017.commands.Autonomous;
 import org.usfirst.frc.team3255.robot2017.subsystems.Climber;
 import org.usfirst.frc.team3255.robot2017.subsystems.Collector;
 import org.usfirst.frc.team3255.robot2017.subsystems.Drivetrain;
@@ -96,7 +96,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		// autonomousCommand = chooser.getSelected();
 		
-		autonomousCommand = new DriveDistance(5.0);
+		autonomousCommand = new Autonomous();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",

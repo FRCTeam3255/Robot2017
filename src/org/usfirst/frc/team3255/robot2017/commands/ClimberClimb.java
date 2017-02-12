@@ -37,7 +37,7 @@ public class ClimberClimb extends Command {
     		Robot.climber.resetEncoderCount();
     	}
     	
-    	return (Robot.climber.getEncoderDistance() >= RobotPreferences.climbDistance());
+    	return (Robot.climber.getEncoderDistance() >= RobotPreferences.climberSwitchDistance());
     }
 
     // Called once after isFinished returns true
