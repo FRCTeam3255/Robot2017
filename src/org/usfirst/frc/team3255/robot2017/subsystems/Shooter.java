@@ -38,8 +38,8 @@ public class Shooter extends Subsystem {
 	}
 	
 	public void setShooterSpeed(double speed) {
-		leftTalon.set(speed);
-		rightTalon.set(-speed);
+		leftTalon.set(-speed);
+		rightTalon.set(speed);
 	}
 	
 	public boolean isBallDetected() {

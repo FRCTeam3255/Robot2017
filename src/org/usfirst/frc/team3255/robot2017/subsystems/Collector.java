@@ -37,8 +37,8 @@ public class Collector extends Subsystem {
 	}
 	
 	public void reverse() {
-		intakeTalon.set(-RobotPreferences.collectorIntakeSpeed());
-		loadTalon.set(0.0);
+		intakeTalon.set(0.0);
+		loadTalon.set(RobotPreferences.collectorLoadSpeed());
 		collectorOn = false;
 	}
 	
