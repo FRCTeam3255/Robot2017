@@ -9,6 +9,15 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("DrivePulsesPerFoot", 1.0);
 	}
 	
+	//Collector
+	public static double collectorIntakeSpeed() {
+		return Preferences.getInstance().getDouble("CollectorIntakeSpeed", 1.0);
+	}
+	
+	public static double collectorLoadSpeed() {
+		return Preferences.getInstance().getDouble("CollectorLoadSpeed", 1.0);
+	}
+	
 	//Climber
 	public static double climberPulsesPerFoot() {
 		return Preferences.getInstance().getDouble("ClimberPulsesPerFoot", 1.0);

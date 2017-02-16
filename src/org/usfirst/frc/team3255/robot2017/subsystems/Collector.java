@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.RobotMap;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import com.ctre.CANTalon;
 
@@ -30,13 +31,13 @@ public class Collector extends Subsystem {
 	}
 	
 	public void collect() {
-		intakeTalon.set(1.0);
-		loadTalon.set(1.0);
+		intakeTalon.set(RobotPreferences.collectorIntakeSpeed());
+		loadTalon.set(RobotPreferences.collectorLoadSpeed());
 		collectorOn = true;
 	}
 	
 	public void reverse() {
-		intakeTalon.set(-1.0);
+		intakeTalon.set(-RobotPreferences.collectorIntakeSpeed());
 		loadTalon.set(0.0);
 		collectorOn = false;
 	}
@@ -48,8 +49,8 @@ public class Collector extends Subsystem {
 	}
 	
 	public void shoot() {
-		intakeTalon.set(1.0);
-		loadTalon.set(-1.0);
+		intakeTalon.set(RobotPreferences.collectorIntakeSpeed());
+		loadTalon.set(-RobotPreferences.collectorLoadSpeed());
 		collectorOn = false;
 	}
 	
