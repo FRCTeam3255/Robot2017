@@ -43,8 +43,12 @@ public class Climber extends Subsystem {
 		climberEncoder = new Encoder(RobotMap.CLIMBER_ENCODER_A, RobotMap.CLIMBER_ENCODER_B);
 	}
 	
-	public void forward() {
-		setClimberSpeed(1.0);
+	public void forwardLowSpeed() {
+		setClimberSpeed(-0.5);
+	}
+	
+	public void forwardHighSpeed() {
+		setClimberSpeed(-0.7);
 	}
 	
 	public void stop() {

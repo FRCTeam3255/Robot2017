@@ -70,8 +70,11 @@ public class OI {
 		S7.whenReleased(new CollectorStop());
 		// S10 is shooter lowSpeed while held - see SetShooterSpeed
 //		S10.whenPressed(new SetShooterSpeed());
-		S11.whenPressed(new ClimberStop());
-		S12.whenPressed(new ClimberClimb());
+		S11.whenPressed(new ClimbLowSpeed());
+		S11.whenReleased(new ClimberStop());
+		S12.whenPressed(new ClimbHighSpeed());
+		S12.whenReleased(new ClimberStop());
+		
 		
 		//DriverStick
 		D5.whenPressed(new DriveShiftDown());
