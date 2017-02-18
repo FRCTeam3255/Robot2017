@@ -1,9 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.commands.ClimberResetEncoder;
-import org.usfirst.frc.team3255.robot2017.commands.DriveDistance;
 import org.usfirst.frc.team3255.robot2017.commands.DriveResetEncoder;
-import org.usfirst.frc.team3255.robot2017.commands.DriveRotate;
 import org.usfirst.frc.team3255.robot2017.commands.NavigationResetYaw;
 import org.usfirst.frc.team3255.robot2017.commands.TelemetryUpdate;
 import org.usfirst.frc.team3255.robot2017.Robot;
@@ -38,7 +36,7 @@ public class Telemetry extends Subsystem {
 		
 		//Climber
 		SmartDashboard.putBoolean("Climber Switch Closed", Robot.climber.isTouchpadSwitchClosed());
-		SmartDashboard.putBoolean("Climber Enabled", Robot.climber.isClimberEnabled());
+		//SmartDashboard.putBoolean("Climber Enabled", Robot.climber.isClimberEnabled());
 		SmartDashboard.putNumber("Climber Encoder Count", Robot.climber.getEncoderCount());
 		SmartDashboard.putNumber("Climber Encoder Distance", Robot.climber.getEncoderDistance());
 		
