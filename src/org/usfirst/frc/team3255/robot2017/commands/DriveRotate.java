@@ -25,6 +25,9 @@ public class DriveRotate extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.telemetry.setAutonomousStatus("Starting " + commandName + ": " + yaw);
+
+    	System.out.println("Starting " + commandName + ": " + yaw);
+
     	Robot.drivetrain.shiftDown();
     	
     	Robot.navYawPID.disable();
@@ -48,6 +51,8 @@ public class DriveRotate extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.telemetry.setAutonomousStatus("Finished " + commandName);
+
+    	System.out.println("Finished " + commandName);
     	
     	Robot.navYawPID.disable();
     	
