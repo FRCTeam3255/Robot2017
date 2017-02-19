@@ -8,7 +8,6 @@ import org.usfirst.frc.team3255.robot2017.subsystems.Drivetrain;
 import org.usfirst.frc.team3255.robot2017.subsystems.DrivetrainDistancePID;
 import org.usfirst.frc.team3255.robot2017.subsystems.Navigation;
 import org.usfirst.frc.team3255.robot2017.subsystems.NavigationYawPID;
-import org.usfirst.frc.team3255.robot2017.subsystems.Shooter;
 import org.usfirst.frc.team3255.robot2017.subsystems.Telemetry;
 import org.usfirst.frc.team3255.robot2017.subsystems.Vision;
 
@@ -27,7 +26,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Robot extends IterativeRobot {
 
 	public static Drivetrain drivetrain = null;
-	public static Shooter shooter = null;
 	public static Collector collector = null;
 	public static Climber climber = null;
 	public static Vision vision = null;
@@ -48,7 +46,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		drivetrain = new Drivetrain();
-		shooter = new Shooter();
 		collector = new Collector();
 		climber = new Climber();
 		vision = new Vision();

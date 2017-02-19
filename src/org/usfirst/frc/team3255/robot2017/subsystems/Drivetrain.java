@@ -67,12 +67,12 @@ public class Drivetrain extends Subsystem {
 	
 	//Solenoids
 	public void shiftUp() {
-		driveSolenoid.set(Value.kReverse);
+		driveSolenoid.set(Value.kForward);
 		lowGear = false;
 	}
 	
 	public void shiftDown() {
-		driveSolenoid.set(Value.kForward);
+		driveSolenoid.set(Value.kReverse);
 		lowGear = true;
 	}
 	

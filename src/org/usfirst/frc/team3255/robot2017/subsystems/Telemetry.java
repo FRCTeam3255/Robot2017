@@ -1,8 +1,10 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.commands.ClimberResetEncoder;
+import org.usfirst.frc.team3255.robot2017.commands.DriveDistance;
 import org.usfirst.frc.team3255.robot2017.commands.DriveResetEncoder;
 import org.usfirst.frc.team3255.robot2017.commands.NavigationResetYaw;
+import org.usfirst.frc.team3255.robot2017.commands.PlaceGear;
 import org.usfirst.frc.team3255.robot2017.commands.TelemetryUpdate;
 import org.usfirst.frc.team3255.robot2017.Robot;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -21,14 +23,11 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putData("Drive Reset Encoders", new DriveResetEncoder());
 		SmartDashboard.putData("Climber Reset Encoder", new ClimberResetEncoder());
 		SmartDashboard.putData("Reset Yaw", new NavigationResetYaw());
+		SmartDashboard.putData("Drive Distance", new DriveDistance("Debug", 3.0));
+		SmartDashboard.putData("Place Gear", new PlaceGear());
 	}
 	
-	public void update() {
-		//sensor outputs
-		//Shooter
-		SmartDashboard.putNumber("Shooter Speed", Robot.shooter.getShooterSpeed());
-		SmartDashboard.putBoolean("Ball Switch", Robot.shooter.isBallDetected());
-		
+	public void update() {		
 		//Drivetrain
 		SmartDashboard.putNumber("Drivetrain Encoder Count", Robot.drivetrain.getEncoderCount());
 		SmartDashboard.putNumber("Drivetrain Encoder Distance", Robot.drivetrain.getEncoderDistance());

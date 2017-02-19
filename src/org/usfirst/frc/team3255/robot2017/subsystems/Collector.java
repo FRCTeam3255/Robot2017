@@ -16,41 +16,48 @@ public class Collector extends Subsystem {
     // here. Call these from Commands.
 	private boolean collectorOn = false;
 	
-	private CANTalon intakeTalon = null;
 	private CANTalon loadTalon = null;
+	private CANTalon shooterLeftTalon = null;
+	private CANTalon shooterRightTalon = null;
 	
 	public Collector() {
 		//CANTalons
-		intakeTalon = new CANTalon(RobotMap.COLLECTOR_INTAKE_TALON);
 		loadTalon = new CANTalon(RobotMap.COLLECTOR_LOAD_TALON);
+		shooterLeftTalon = new CANTalon(RobotMap.SHOOTER_LEFT_TALON);
+		shooterRightTalon = new CANTalon(RobotMap.SHOOTER_RIGHT_TALON);
 		
 		loadTalon.setInverted(true);
 		
-		intakeTalon.setSafetyEnabled(false);
 		loadTalon.setSafetyEnabled(false);
+		shooterLeftTalon.setSafetyEnabled(false);
+		shooterRightTalon.setSafetyEnabled(false);
 	}
 	
 	public void collect() {
-		intakeTalon.set(RobotPreferences.collectorIntakeSpeed());
-		loadTalon.set(RobotPreferences.collectorLoadSpeed());
+		loadTalon.set(-RobotPreferences.collectorLoadSpeed());
+		shooterLeftTalon.set(-RobotPreferences.shootSpeed());
+		shooterRightTalon.set(RobotPreferences.shootSpeed());
 		collectorOn = true;
 	}
 	
 	public void reverse() {
-		intakeTalon.set(0.0);
-		loadTalon.set(RobotPreferences.collectorLoadSpeed());
+		loadTalon.set(-RobotPreferences.collectorLoadSpeed());
+		shooterLeftTalon.set(0.0);
+		shooterRightTalon.set(0.0);
 		collectorOn = false;
 	}
 	
 	public void stop() {
-		intakeTalon.set(0.0);
 		loadTalon.set(0.0);
+		shooterLeftTalon.set(0.0);
+		shooterRightTalon.set(0.0);
 		collectorOn = false;
 	}
 	
 	public void shoot() {
-		intakeTalon.set(RobotPreferences.collectorIntakeSpeed());
-		loadTalon.set(-RobotPreferences.collectorLoadSpeed());
+		loadTalon.set(RobotPreferences.collectorLoadSpeed());
+		shooterLeftTalon.set(-RobotPreferences.shootSpeed());
+		shooterRightTalon.set(RobotPreferences.shootSpeed());
 		collectorOn = false;
 	}
 	

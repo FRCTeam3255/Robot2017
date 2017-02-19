@@ -10,12 +10,12 @@ public class RobotPreferences {
 	}
 	
 	//Collector
-	public static double collectorIntakeSpeed() {
-		return Preferences.getInstance().getDouble("CollectorIntakeSpeed", 1.0);
-	}
-	
 	public static double collectorLoadSpeed() {
 		return Preferences.getInstance().getDouble("CollectorLoadSpeed", 1.0);
+	}
+	
+	public static double shootSpeed() {
+		return Preferences.getInstance().getDouble("CollectorShootSpeed", 1.0);
 	}
 	
 	//Climber
@@ -25,18 +25,6 @@ public class RobotPreferences {
 	
 	public static double climberSwitchDistance() {
 		return Preferences.getInstance().getDouble("ClimberSwitchDistance", 1.0);
-	}
-
-	//Shooter
-	public static double shooterMaxHighSpeed() {
-		return Preferences.getInstance().getDouble("ShooterMaxHighSpeed", 1.0);
-	}
-	
-	public static double shooterMaxLowSpeed() {
-		return Preferences.getInstance().getDouble("ShooterMaxLowSpeed", 0.5);
-	}
-	public static double shooterSwitchDelay() {
-		return Preferences.getInstance().getDouble("ShooterSwitchDelay", 1.0);
 	}
 	
 	//Navigation
