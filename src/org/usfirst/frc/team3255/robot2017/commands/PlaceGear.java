@@ -43,7 +43,9 @@ public class PlaceGear extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveDistance("GearD1", autoGearD1()));
+    	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveRotate("GearTurn", autoGearTurn()));
+    	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveDistance("GearD2", autoGearD2()));
     	addSequential(new DoDelay(autoGearDelay()));
     }

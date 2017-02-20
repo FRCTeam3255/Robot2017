@@ -43,7 +43,9 @@ public class AutoShot extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveDistance("ShotD1", autoShotD1()));
+    	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveRotate("ShotTurn", autoShotTurn()));
+    	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveDistance("ShotD2", autoShotD2()));
     	addSequential(new DoDelay(autoShotTime()));
     }

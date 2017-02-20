@@ -39,7 +39,9 @@ public class CrossLine extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new DriveDistance("CrossD1", autoCrossD1()));
+    	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveRotate("CrossTurn", autoCrossTurn()));
+    	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveDistance("CrossD2", autoCrossD2()));
     }
 }

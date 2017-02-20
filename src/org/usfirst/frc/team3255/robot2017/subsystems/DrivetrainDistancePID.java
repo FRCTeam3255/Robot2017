@@ -12,6 +12,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
 
 	double output = 0.0;
 	boolean outputValid = false;
+	int targetCounter = 0;
 	
     // Initialize your subsystem here
     public DrivetrainDistancePID() {
@@ -57,11 +58,31 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	if((this.getPIDController().isEnabled() == false) || (outputValid == false)) {
     		return 0.0;
     	}
+   
+    	double minSpeed = RobotPreferences.minMoveSpeed();
+  
+    	if(Math.abs(output) < minSpeed) {
+    		if(output < 0) {
+    			output = -minSpeed;
+    		}
+    		else {
+    			output = minSpeed;
+    		}
+    	}
+    	
     	return output;
     }
     
     public boolean onRawTarget() {
-    	return (Math.abs(Robot.drivetrain.getEncoderDistance() - getPIDController().getSetpoint()) < RobotPreferences.distanceTolerance());
+    	
+    	if (Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getEncoderDistance()) < RobotPreferences.distanceTolerance()) {
+    		targetCounter = targetCounter + 1;
+    	}
+    	else {
+    		targetCounter = 0;
+    	}
+    	
+    	return (targetCounter >= RobotPreferences.targetCount());
     }
     
     public void initDefaultCommand() {

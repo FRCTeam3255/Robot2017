@@ -28,8 +28,6 @@ public class DriveRotate extends Command {
 
     	System.out.println("Starting " + commandName + ": " + yaw);
 
-    	Robot.drivetrain.shiftDown();
-    	
     	Robot.navYawPID.disable();
 
     	Robot.navigation.resetYaw();
@@ -45,18 +43,24 @@ public class DriveRotate extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.navYawPID.onRawTarget();
+    	boolean onTarget = Robot.navYawPID.onRawTarget();
+    	
+    	if(onTarget) {
+        	Robot.drivetrain.arcadeDrive(0.0, 0.0);    		
+    	}
+    	
+        return onTarget;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drivetrain.arcadeDrive(0.0, 0.0);
+
     	Robot.telemetry.setAutonomousStatus("Finished " + commandName);
 
     	System.out.println("Finished " + commandName);
     	
     	Robot.navYawPID.disable();
-    	
-    	Robot.drivetrain.arcadeDrive(0.0, 0.0);
     }
 
     // Called when another command which requires one or more of the same

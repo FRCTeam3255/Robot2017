@@ -12,6 +12,7 @@ public class NavigationYawPID extends PIDSubsystem {
 
 	double output = 0.0;
 	boolean outputValid = false;
+	int targetCounter = 0;
 	
     // Initialize your subsystem here
     public NavigationYawPID() {
@@ -82,6 +83,18 @@ public class NavigationYawPID extends PIDSubsystem {
     	if(this.getPIDController().isEnabled() == false || outputValid == false) {
     		return 0.0;
     	}
+    	
+    	double minYaw = RobotPreferences.minYawSpeed();
+    	  
+    	if(Math.abs(output) < minYaw) {
+    		if(output < 0) {
+    			output = -minYaw;
+    		}
+    		else {
+    			output = minYaw;
+    		}
+    	}
+    	
     	return output;
     }
     
@@ -92,7 +105,14 @@ public class NavigationYawPID extends PIDSubsystem {
     	
     	System.err.println("onRawTarget: yaw = " + calculatedYaw + " error = " + error);
     	
-    	return (Math.abs(error) < RobotPreferences.yawTolerance());
+    	if (Math.abs(error) < RobotPreferences.yawTolerance()) {
+    		targetCounter = targetCounter + 1;
+    	}
+    	else {
+    		targetCounter = 0;
+    	}
+    	
+    	return (targetCounter >= RobotPreferences.targetCount());
     }
     
     public void initDefaultCommand() {

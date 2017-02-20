@@ -73,6 +73,14 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("MaxMoveSpeed", 1.0);
 	}
 
+	public static double minMoveSpeed() {
+		return Preferences.getInstance().getDouble("MinMoveSpeed", 0.0);
+	}
+	
+	public static double minYawSpeed() {
+		return Preferences.getInstance().getDouble("MinYawSpeed", 0.0);
+	}
+
 	//Autonomous
 	public static double autoGearD1() {
 		return Preferences.getInstance().getDouble("AutoGearD1", 0.0);
@@ -116,5 +124,13 @@ public class RobotPreferences {
 	
 	public static double autoCrossD2() {
 		return Preferences.getInstance().getDouble("AutoCrossD2", 0.0);
+	}
+	
+	public static double autoDoDelay() {
+		return Preferences.getInstance().getDouble("AutoDoDelay", 0.0);
+	}
+	
+	public static int targetCount() {
+		return Preferences.getInstance().getInt("TargetCount", 5);
 	}
 }
