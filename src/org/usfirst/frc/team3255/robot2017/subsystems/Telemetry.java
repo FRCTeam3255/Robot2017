@@ -6,6 +6,7 @@ import org.usfirst.frc.team3255.robot2017.commands.DriveResetEncoder;
 import org.usfirst.frc.team3255.robot2017.commands.NavigationResetYaw;
 import org.usfirst.frc.team3255.robot2017.commands.PlaceGear;
 import org.usfirst.frc.team3255.robot2017.commands.TelemetryUpdate;
+import org.usfirst.frc.team3255.robot2017.AutoPreferences;
 import org.usfirst.frc.team3255.robot2017.Robot;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -47,6 +48,14 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putNumber("Pitch", Robot.navigation.getPitch());
 		SmartDashboard.getBoolean("navX Calibrating", Robot.navigation.isCalibrating());
 		SmartDashboard.putNumber("Acceleration", Robot.navigation.getAccel());
+		
+		//Autonomous Preferences
+		SmartDashboard.putNumber("Lane", AutoPreferences.getLane());
+		SmartDashboard.putBoolean("Is Red Alliance", AutoPreferences.isRedAlliance());
+		SmartDashboard.putBoolean("Do Gear", AutoPreferences.doGear());
+		SmartDashboard.putBoolean("Do Shot", AutoPreferences.doShot());
+		SmartDashboard.putBoolean("Do Cross", AutoPreferences.doCross());
+		SmartDashboard.putBoolean("Competition Mode", !AutoPreferences.isDebug());
 	}
 	
 	public void setAutonomousStatus(String statusText) {

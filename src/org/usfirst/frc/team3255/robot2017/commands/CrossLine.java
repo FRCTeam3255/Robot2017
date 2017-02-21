@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
+import org.usfirst.frc.team3255.robot2017.AutoPreferences;
 import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -10,15 +11,136 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CrossLine extends CommandGroup {
 	
 	public double autoCrossD1() {
-		return RobotPreferences.autoCrossD1();
+		if(AutoPreferences.isDebug()) {
+			return RobotPreferences.autoCrossD1();
+		}
+		
+		if((AutoPreferences.doCross() == false || (AutoPreferences.getLane() == 0))) {
+			return 0.0;
+		}
+		
+		int lane = AutoPreferences.getLane();
+		double distance = 0.0;
+		
+		if(AutoPreferences.doShot() == true) {
+			distance = -1;
+		}
+		else {
+			if(AutoPreferences.doGear() == false) {
+				if(lane == 1) {
+					distance = -1;
+				}
+				if(lane == 2) {
+					distance = -1;
+				}
+				if(lane == 3) {
+					distance = -1;
+				}
+			}
+			else {
+				if(lane == 1) {
+					distance = 1;
+				}
+				if(lane == 2) {
+					distance = 1;
+				}
+				if(lane == 3) {
+					distance = 1;
+				}
+			}
+		}
+		
+		return distance;
 	}
 	
 	public double autoCrossTurn() {
-		return RobotPreferences.autoCrossTurn();
+		if(AutoPreferences.isDebug()) {
+			return RobotPreferences.autoCrossTurn();
+		}
+		
+		if((AutoPreferences.doCross() == false) || (AutoPreferences.getLane() == 0)) {
+			return 0.0;
+		}
+		
+		int lane = AutoPreferences.getLane();
+		double angle = 0.0;
+		
+		if(AutoPreferences.doShot() == true) {
+			angle = -1;
+		}
+		else {
+			if(AutoPreferences.doGear() == false) {
+				if(lane == 1) {
+					angle = -1;
+				}
+				if(lane == 2) {
+					angle = -1;
+				}
+				if(lane == 3) {
+					angle = 1;
+				}
+			}
+			else {
+				if(lane == 1) {
+					angle = -1;
+				}
+				if(lane == 2) {
+					angle = -1;
+				}
+				if(lane == 3) {
+					angle = 1;
+				}
+			}
+		}
+		
+		if(AutoPreferences.isRedAlliance() == false) {
+			angle = -angle;
+		}
+		
+		return angle;
 	}
 	
 	public double autoCrossD2() {
-		return RobotPreferences.autoCrossD2();
+		if(AutoPreferences.isDebug()) {
+			return RobotPreferences.autoCrossD2();
+		}
+		
+		if((AutoPreferences.doCross() == false || (AutoPreferences.getLane() == 0))) {
+			return 0.0;
+		}
+		
+		int lane = AutoPreferences.getLane();
+		double distance = 0.0;
+		
+		if(AutoPreferences.doShot() == true) {
+			distance = 1;
+		}
+		else {
+			if(AutoPreferences.doGear() == false) {
+				if(lane == 1) {
+					distance = 1;
+				}
+				if(lane == 2) {
+					distance = 1;
+				}
+				if(lane == 3) {
+					distance = 1;
+				}
+			}
+			else {
+				if(lane == 1) {
+					distance = 1;
+				}
+				if(lane == 2) {
+					distance = 1;
+				}
+				if(lane == 3) {
+					distance = 1;
+				}
+			}
+		}
+		
+		return distance;
 	}
 
     public CrossLine() {

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
+import org.usfirst.frc.team3255.robot2017.AutoPreferences;
 import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -10,15 +11,80 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class PlaceGear extends CommandGroup {
 
 	public double autoGearD1() {
-		return RobotPreferences.autoGearD1();
+		if(AutoPreferences.isDebug()) {
+			return RobotPreferences.autoGearD1();
+		}
+		
+		if((AutoPreferences.doGear() == false) || (AutoPreferences.getLane() == 0)) {
+			return 0.0;
+		}
+
+		int lane = AutoPreferences.getLane();
+		double distance = 0.0;
+		
+		if((lane == 1) || lane == 3) {
+			distance = -5; // get from CAD
+		}
+		else {
+			distance = -3; // get from CAD
+		}
+
+		return distance;
 	}
 	
 	public double autoGearTurn() {
-		return RobotPreferences.autoGearTurn();
+		if (AutoPreferences.isDebug()) {
+			return RobotPreferences.autoGearTurn();
+		}
+		
+		if((AutoPreferences.doGear() == false) || (AutoPreferences.getLane() == 0)) {
+			return 0.0;
+		}
+		
+		double angle = 0;
+
+		int lane = AutoPreferences.getLane();
+
+		if(AutoPreferences.isRedAlliance()) {
+			if(lane == 1) {
+				angle = -60;
+			}
+			else if(lane == 3) {
+				angle = 60;
+			}
+		}
+		else {
+			if(lane == 1) {
+				angle = 60;
+			}
+			else if(lane == 3) {
+				angle = -60;
+			}			
+		}
+		
+		return angle;
 	}
 	
 	public double autoGearD2() {
-		return RobotPreferences.autoGearD2();
+		if(AutoPreferences.isDebug()) {
+			return RobotPreferences.autoGearD2();
+		}
+		
+		if((AutoPreferences.doGear() == false) || (AutoPreferences.getLane() == 0)) {
+			return 0.0;
+		}
+
+		int lane = AutoPreferences.getLane();
+		double distance = 0.0;
+		
+		if((lane == 1) || lane == 3) {
+			distance = -2; // get from CAD
+		}
+		else {
+			distance = 0;
+		}
+
+		return distance;
 	}
 	
 	public double autoGearDelay() {

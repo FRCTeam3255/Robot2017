@@ -42,6 +42,7 @@ public class RobotMap {
 	//Joysticks
 	public static final int JOYSTICK_DRIVER = 0;
 	public static final int JOYSTICK_SHOOTER = 1;
+	public static final int JOYSTICK_PREFERENCES = 2;
 	
 	public static final int DRIVER_MOVE_AXIS = 1;
 	public static final int DRIVER_ROTATE_AXIS = 2;
