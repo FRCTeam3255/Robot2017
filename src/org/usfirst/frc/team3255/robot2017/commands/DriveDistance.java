@@ -25,7 +25,7 @@ public class DriveDistance extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.telemetry.setAutonomousStatus("Starting " + commandName + ": " + distance);
-    	Robot.drivetrain.shiftDown();
+    	Robot.drivetrain.shiftUp();
     	Robot.drivetrain.resetEncoderCount();
     	
     	Robot.drivetrainDistancePID.setSetpoint(distance);
