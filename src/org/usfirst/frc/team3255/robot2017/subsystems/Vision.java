@@ -116,19 +116,19 @@ public class Vision extends Subsystem implements Runnable {
 			// the code below shows how to draw on top of the capture image based on which camera is selected
             if(frontCameraSelected) {
             	// write text on the image indicating this is the front camera
-            	Imgproc.putText(image, "Front Camera", new Point(10, CAMERA_HEIGHT / 2), 0, 1.0, new Scalar(255, 255, 255));
+            	//Imgproc.putText(image, "Front Camera", new Point(10, CAMERA_HEIGHT / 2), 0, 1.0, new Scalar(255, 255, 255));
 
             	// draw a rectangle across the top of the image
-                Imgproc.rectangle(image, new Point(10, 10), new Point(CAMERA_WIDTH - 10, 20),
-    					new Scalar(255, 255, 255), 2);
+                //Imgproc.rectangle(image, new Point(10, 10), new Point(CAMERA_WIDTH - 10, 20),
+    			//		new Scalar(255, 255, 255), 2);
             } 
 			else {
             	// write text on the image indicating this is the rear camera
-            	Imgproc.putText(image, "Rear Camera", new Point(10, CAMERA_HEIGHT / 2), 0, 1.0, new Scalar(255, 255, 255));
+           // 	Imgproc.putText(image, "Rear Camera", new Point(10, CAMERA_HEIGHT / 2), 0, 1.0, new Scalar(255, 255, 255));
 
             	// draw a rectangle across the bottom of the image
-    			Imgproc.rectangle(image, new Point(10, CAMERA_HEIGHT - 20), new Point(CAMERA_WIDTH - 10, CAMERA_HEIGHT - 10),
-    					new Scalar(255, 255, 255), 2);
+    		//	Imgproc.rectangle(image, new Point(10, CAMERA_HEIGHT - 20), new Point(CAMERA_WIDTH - 10, CAMERA_HEIGHT - 10),
+    		//			new Scalar(255, 255, 255), 2);
             }
 			
 			// write the captured image to the output stream
