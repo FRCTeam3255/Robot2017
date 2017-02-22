@@ -28,6 +28,9 @@ public class Collector extends Subsystem {
 		
 		loadTalon.setInverted(true);
 		
+		shooterLeftTalon.enableBrakeMode(false);
+		shooterRightTalon.enableBrakeMode(false);
+		
 		loadTalon.setSafetyEnabled(false);
 		shooterLeftTalon.setSafetyEnabled(false);
 		shooterRightTalon.setSafetyEnabled(false);

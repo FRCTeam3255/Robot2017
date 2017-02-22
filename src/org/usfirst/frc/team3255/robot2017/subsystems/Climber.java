@@ -32,6 +32,9 @@ public class Climber extends Subsystem {
 		leftTalon = new CANTalon(RobotMap.CLIMBER_LEFT_TALON);
 		rightTalon = new CANTalon(RobotMap.CLIMBER_RIGHT_TALON);
 		
+		leftTalon.enableBrakeMode(false);
+		rightTalon.enableBrakeMode(false);
+		
 		leftTalon.setSafetyEnabled(false);
 		rightTalon.setSafetyEnabled(false);	
 		
