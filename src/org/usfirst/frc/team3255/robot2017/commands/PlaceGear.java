@@ -23,10 +23,10 @@ public class PlaceGear extends CommandGroup {
 		double distance = 0.0;
 		
 		if((lane == 1) || lane == 3) {
-			distance = -5; // get from CAD
+			distance = -57.2;
 		}
 		else {
-			distance = -3; // get from CAD
+			distance = -80;
 		}
 
 		return distance;
@@ -47,18 +47,18 @@ public class PlaceGear extends CommandGroup {
 
 		if(AutoPreferences.isRedAlliance()) {
 			if(lane == 1) {
-				angle = -60;
+				angle = -55;
 			}
 			else if(lane == 3) {
-				angle = 60;
+				angle = 55;
 			}
 		}
 		else {
 			if(lane == 1) {
-				angle = 60;
+				angle = 55;
 			}
 			else if(lane == 3) {
-				angle = -60;
+				angle = -55;
 			}			
 		}
 		
@@ -78,7 +78,7 @@ public class PlaceGear extends CommandGroup {
 		double distance = 0.0;
 		
 		if((lane == 1) || lane == 3) {
-			distance = -2; // get from CAD
+			distance = -75;
 		}
 		else {
 			distance = 0;
@@ -108,11 +108,11 @@ public class PlaceGear extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveDistance("GearD1", autoGearD1()));
+    	addSequential(new DriveStraightDistance("GearD1", autoGearD1()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveRotate("GearTurn", autoGearTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveDistance("GearD2", autoGearD2()));
+    	addSequential(new DriveStraightDistance("GearD2", autoGearD2()));
     	addSequential(new DoDelay(autoGearDelay()));
     }
 }

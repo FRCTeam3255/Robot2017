@@ -23,29 +23,29 @@ public class CrossLine extends CommandGroup {
 		double distance = 0.0;
 		
 		if(AutoPreferences.doShot() == true) {
-			distance = -1;
+			distance = -40;
 		}
 		else {
 			if(AutoPreferences.doGear() == false) {
 				if(lane == 1) {
-					distance = -1;
+					distance = -140;
 				}
 				if(lane == 2) {
-					distance = -1;
+					distance = -32;
 				}
 				if(lane == 3) {
-					distance = -1;
+					distance = -144;
 				}
 			}
 			else {
 				if(lane == 1) {
-					distance = 1;
+					distance = 75;
 				}
 				if(lane == 2) {
-					distance = 1;
+					distance = 52;
 				}
 				if(lane == 3) {
-					distance = 1;
+					distance = 25;
 				}
 			}
 		}
@@ -66,29 +66,29 @@ public class CrossLine extends CommandGroup {
 		double angle = 0.0;
 		
 		if(AutoPreferences.doShot() == true) {
-			angle = -1;
+			angle = -46.2;
 		}
 		else {
 			if(AutoPreferences.doGear() == false) {
 				if(lane == 1) {
-					angle = -1;
+					angle = -45;
 				}
 				if(lane == 2) {
-					angle = -1;
+					angle = -48;
 				}
 				if(lane == 3) {
-					angle = 1;
+					angle = -45;
 				}
 			}
 			else {
 				if(lane == 1) {
-					angle = -1;
+					angle = 60;
 				}
 				if(lane == 2) {
-					angle = -1;
+					angle = -45;
 				}
 				if(lane == 3) {
-					angle = 1;
+					angle = -103;
 				}
 			}
 		}
@@ -113,29 +113,29 @@ public class CrossLine extends CommandGroup {
 		double distance = 0.0;
 		
 		if(AutoPreferences.doShot() == true) {
-			distance = 1;
+			distance = -90;
 		}
 		else {
 			if(AutoPreferences.doGear() == false) {
 				if(lane == 1) {
-					distance = 1;
+					distance = 0;
 				}
 				if(lane == 2) {
-					distance = 1;
+					distance = -204;
 				}
 				if(lane == 3) {
-					distance = 1;
+					distance = -51;
 				}
 			}
 			else {
 				if(lane == 1) {
-					distance = 1;
+					distance = -80;
 				}
 				if(lane == 2) {
-					distance = 1;
+					distance = -117;
 				}
 				if(lane == 3) {
-					distance = 1;
+					distance = -109.6;
 				}
 			}
 		}
@@ -160,10 +160,10 @@ public class CrossLine extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveDistance("CrossD1", autoCrossD1()));
+    	addSequential(new DriveStraightDistance("CrossD1", autoCrossD1()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveRotate("CrossTurn", autoCrossTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveDistance("CrossD2", autoCrossD2()));
+    	addSequential(new DriveStraightDistance("CrossD2", autoCrossD2()));
     }
 }

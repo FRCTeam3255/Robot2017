@@ -23,27 +23,27 @@ public class AutoShot extends CommandGroup {
 		double distance = 0.0;
 		
 		if((AutoPreferences.doGear() == false) && lane == 1) {
-			distance = -3;
+			distance = -41;
 		}
 		
 		if((AutoPreferences.doGear() == false) && lane == 2) {
-			distance = -5;
+			distance = -13;
 		}
 		
 		if((AutoPreferences.doGear() == false) && lane == 3) {
-			distance = -3;
+			distance = -13;
 		}
 		
 		if((AutoPreferences.doGear() == true) && lane == 1) {
-			distance = 1;
+			distance = 66;
 		}
 		
 		if((AutoPreferences.doGear() == true) && lane == 2) {
-			distance = 1;
+			distance = 14;
 		}
 		
 		if((AutoPreferences.doGear() == true) && lane == 3) {
-			distance = 1;
+			distance = 61;
 		}
 
 		return distance;
@@ -63,7 +63,7 @@ public class AutoShot extends CommandGroup {
 		
 		if(AutoPreferences.isRedAlliance() == true) {
 			if((AutoPreferences.doGear() == false) && lane == 1) {
-				angle = -90;
+				angle = -46.2;
 		 	}
 			
 			if((AutoPreferences.doGear() == false) && lane == 2) {
@@ -71,25 +71,25 @@ public class AutoShot extends CommandGroup {
 			}
 			
 			if((AutoPreferences.doGear() == false) && lane == 3) {
-				angle = -60;
-			}
-			
-			if((AutoPreferences.doGear() == true) && lane == 1) {
-				angle = -10;
-			}
-			
-			if((AutoPreferences.doGear() == true) && lane == 2) {
 				angle = -90;
 			}
 			
+			if((AutoPreferences.doGear() == true) && lane == 1) {
+				angle = 17;
+			}
+			
+			if((AutoPreferences.doGear() == true) && lane == 2) {
+				angle = -69;
+			}
+			
 			if((AutoPreferences.doGear() == true) && lane == 3) {
-				angle = -10;
+				angle = -137;
 			}
 		}
 		
 		else {
 			if((AutoPreferences.doGear() == false) && lane == 1) {
-				angle = 90;
+				angle = 46.2;
 			}
 			
 			if((AutoPreferences.doGear() == false) && lane == 2) {
@@ -97,19 +97,19 @@ public class AutoShot extends CommandGroup {
 			}
 			
 			if((AutoPreferences.doGear() == false) && lane == 3) {
-				angle = 60;
-			}
-			
-			if((AutoPreferences.doGear() == true) && lane == 1) {
-				angle = 10;
-			}
-			
-			if((AutoPreferences.doGear() == true) && lane == 2) {
 				angle = 90;
 			}
 			
+			if((AutoPreferences.doGear() == true) && lane == 1) {
+				angle = -17;
+			}
+			
+			if((AutoPreferences.doGear() == true) && lane == 2) {
+				angle = 69;
+			}
+			
 			if((AutoPreferences.doGear() == true) && lane == 3) {
-				angle = 10;
+				angle = 137;
 			}
 		}
 		
@@ -129,27 +129,27 @@ public class AutoShot extends CommandGroup {
 		double distance = 0.0;
 		
 		if((AutoPreferences.doGear() == false) && lane == 1) {
-			distance = 2;
+			distance = 40;
 		}
 		
 		if((AutoPreferences.doGear() == false) && lane == 2) {
-			distance = 6;
+			distance = 162;
 		}
 		
 		if((AutoPreferences.doGear() == false) && lane == 3) {
-			distance = 5;
+			distance = 287;
 		}
 		
 		if((AutoPreferences.doGear() == true) && lane == 1) {
-			distance = 2;
+			distance = 64;
 		}
 		
 		if((AutoPreferences.doGear() == true) && lane == 2) {
-			distance = 2;
+			distance = 148;
 		}
 		
 		if((AutoPreferences.doGear() == true) && lane == 3) {
-			distance = 2;
+			distance = 257;
 		}
 
 		return distance;
@@ -176,11 +176,11 @@ public class AutoShot extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveDistance("ShotD1", autoShotD1()));
+    	addSequential(new DriveStraightDistance("ShotD1", autoShotD1()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveRotate("ShotTurn", autoShotTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveDistance("ShotD2", autoShotD2()));
+    	addSequential(new DriveStraightDistance("ShotD2", autoShotD2()));
     	addSequential(new CollectorShoot());
     	addSequential(new DoDelay(autoShotTime()));
     	addSequential(new CollectorStop());

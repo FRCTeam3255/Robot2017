@@ -12,13 +12,13 @@ public class DriveStraightDistance extends Command {
 	double distance;
 	String commandName;
 	
-	public DriveStraightDistance(String name, double feet) {
+	public DriveStraightDistance(String name, double inches) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
     	requires(Robot.drivetrainDistancePID);
     	
-    	distance = feet;
+    	distance = inches / 12.0;
     	commandName = name;
     }
 

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
+import org.usfirst.frc.team3255.robot2017.commands.AutoShot;
 import org.usfirst.frc.team3255.robot2017.commands.ClimberResetEncoder;
+import org.usfirst.frc.team3255.robot2017.commands.CrossLine;
 import org.usfirst.frc.team3255.robot2017.commands.DriveDistance;
 import org.usfirst.frc.team3255.robot2017.commands.DriveResetEncoder;
 import org.usfirst.frc.team3255.robot2017.commands.NavigationResetYaw;
@@ -26,6 +28,8 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putData("Reset Yaw", new NavigationResetYaw());
 		SmartDashboard.putData("Drive Distance", new DriveDistance("Debug", 3.0));
 		SmartDashboard.putData("Place Gear", new PlaceGear());
+		SmartDashboard.putData("Auto Shot", new AutoShot());
+		SmartDashboard.putData("Cross Line", new CrossLine());
 	}
 	
 	public void update() {		
