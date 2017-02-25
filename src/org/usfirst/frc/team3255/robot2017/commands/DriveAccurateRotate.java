@@ -8,50 +8,62 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveDistance extends Command {
+public class DriveAccurateRotate extends Command {
 
-	double distance;
+	double yaw;
 	String commandName;
 	
-	public DriveDistance(String name, double inches) {
+    public DriveAccurateRotate(String name, double degrees) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
-    	requires(Robot.drivetrainDistancePID);
+    	requires(Robot.navYawPID);
     	
-    	distance = inches / 12.0;
+    	yaw = degrees;
     	commandName = name;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.telemetry.setAutonomousStatus("Starting " + commandName + ": " + distance);
     	Robot.drivetrain.shiftUp();
-    	Robot.drivetrain.resetEncoderCount();
+    	Robot.telemetry.setAutonomousStatus("Starting " + commandName + ": " + yaw);
+
+    	System.out.println("Starting " + commandName + ": " + yaw);
+
+    	Robot.navYawPID.disable();
+
+    	Robot.navigation.resetYaw();
+    	Robot.navYawPID.setSetpoint(yaw);
+    	Robot.navYawPID.setRawTolerance(RobotPreferences.yawTolerance());
     	
-    	Robot.drivetrainDistancePID.setSetpoint(distance);
-    	Robot.drivetrainDistancePID.setRawTolerance(RobotPreferences.distanceTolerance() * 2);
-    	Robot.drivetrainDistancePID.enable();
+    	Robot.navYawPID.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(Robot.drivetrainDistancePID.getOutput(), 0.0);
+    	Robot.drivetrain.arcadeDrive(0.0, Robot.navYawPID.getOutput());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//taking the absolute value of the encoder distance and compares it to user input distance
-        return Robot.drivetrainDistancePID.onRawTarget();
+    	boolean onTarget = Robot.navYawPID.onRawTarget();
+    	
+    	if(onTarget) {
+        	Robot.drivetrain.arcadeDrive(0.0, 0.0);    		
+    	}
+    	
+        return onTarget;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drivetrain.arcadeDrive(0.0, 0.0);
+
     	Robot.telemetry.setAutonomousStatus("Finished " + commandName);
 
-    	Robot.drivetrainDistancePID.disable();
+    	System.out.println("Finished " + commandName);
     	
-    	Robot.drivetrain.arcadeDrive(0.0, 0.0);
+    	Robot.navYawPID.disable();
     }
 
     // Called when another command which requires one or more of the same

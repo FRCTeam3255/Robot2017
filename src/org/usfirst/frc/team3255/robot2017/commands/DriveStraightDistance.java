@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
 import org.usfirst.frc.team3255.robot2017.Robot;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -30,6 +31,7 @@ public class DriveStraightDistance extends Command {
     	Robot.navigation.resetYaw();
     	
     	Robot.drivetrainDistancePID.setSetpoint(distance);
+    	Robot.drivetrainDistancePID.setRawTolerance(RobotPreferences.distanceTolerance());
     	Robot.drivetrainDistancePID.enable();
     	Robot.navYawPID.setSetpoint(0.0);
     	Robot.navYawPID.enable();

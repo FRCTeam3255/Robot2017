@@ -13,6 +13,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
 	double output = 0.0;
 	boolean outputValid = false;
 	int targetCounter = 0;
+	double tolerance = 0.0;
 	
     // Initialize your subsystem here
     public DrivetrainDistancePID() {
@@ -22,6 +23,8 @@ public class DrivetrainDistancePID extends PIDSubsystem {
         // enable() - Enables the PID controller.
     	super(0, 0, 0);
     	this.setSetpoint(0.0);
+    	
+    	setRawTolerance(RobotPreferences.distanceTolerance());
     }
 
     public void enable() {
@@ -29,8 +32,6 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     			RobotPreferences.driveDistanceP(),
     			RobotPreferences.driveDistanceI(),
     			RobotPreferences.driveDistanceD());
-    	
-    	setAbsoluteTolerance(RobotPreferences.distanceTolerance());
     	
     	double maxSpeed = RobotPreferences.maxMoveSpeed();
     	this.setOutputRange(-maxSpeed, maxSpeed);
@@ -73,9 +74,13 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	return output;
     }
     
+	public void setRawTolerance(double tolerance) {
+		this.tolerance = tolerance;
+	}
+    
     public boolean onRawTarget() {
     	
-    	if (Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getEncoderDistance()) < RobotPreferences.distanceTolerance()) {
+    	if (Math.abs(getPIDController().getSetpoint() - Robot.drivetrain.getEncoderDistance()) < tolerance) {
     		targetCounter = targetCounter + 1;
     	}
     	else {
@@ -89,4 +94,5 @@ public class DrivetrainDistancePID extends PIDSubsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
 }

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
 import org.usfirst.frc.team3255.robot2017.Robot;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -33,6 +34,7 @@ public class DriveRotate extends Command {
 
     	Robot.navigation.resetYaw();
     	Robot.navYawPID.setSetpoint(yaw);
+    	Robot.navYawPID.setRawTolerance(RobotPreferences.yawTolerance() * 5);
     	
     	Robot.navYawPID.enable();
     }

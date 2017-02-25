@@ -39,7 +39,7 @@ public class CrossLine extends CommandGroup {
 			}
 			else {
 				if(lane == 1) {
-					distance = 75;
+					distance = 24;
 				}
 				if(lane == 2) {
 					distance = 52;
@@ -66,7 +66,7 @@ public class CrossLine extends CommandGroup {
 		double angle = 0.0;
 		
 		if(AutoPreferences.doShot() == true) {
-			angle = -46.2;
+			angle = 46.2;
 		}
 		else {
 			if(AutoPreferences.doGear() == false) {
@@ -82,7 +82,7 @@ public class CrossLine extends CommandGroup {
 			}
 			else {
 				if(lane == 1) {
-					angle = 60;
+					angle = 90;
 				}
 				if(lane == 2) {
 					angle = -45;
@@ -129,10 +129,10 @@ public class CrossLine extends CommandGroup {
 			}
 			else {
 				if(lane == 1) {
-					distance = -80;
+					distance = -48;
 				}
 				if(lane == 2) {
-					distance = -117;
+					distance = -207;
 				}
 				if(lane == 3) {
 					distance = -109.6;
@@ -144,26 +144,10 @@ public class CrossLine extends CommandGroup {
 	}
 
     public CrossLine() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
-
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
-    	addSequential(new DriveStraightDistance("CrossD1", autoCrossD1()));
+    	addSequential(new DriveDistance("CrossD1Inaccurate", autoCrossD1()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveRotate("CrossTurn", autoCrossTurn()));
+    	addSequential(new DriveRotate("CrossTurnInaccurate", autoCrossTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveStraightDistance("CrossD2", autoCrossD2()));
+    	addSequential(new DriveDistance("CrossD2Inaccurate", autoCrossD2()));
     }
 }

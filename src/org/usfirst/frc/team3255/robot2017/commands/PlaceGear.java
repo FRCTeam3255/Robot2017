@@ -47,18 +47,18 @@ public class PlaceGear extends CommandGroup {
 
 		if(AutoPreferences.isRedAlliance()) {
 			if(lane == 1) {
-				angle = -55;
+				angle = -54;
 			}
 			else if(lane == 3) {
-				angle = 55;
+				angle = 54;
 			}
 		}
 		else {
 			if(lane == 1) {
-				angle = 55;
+				angle = 54;
 			}
 			else if(lane == 3) {
-				angle = -55;
+				angle = -54;
 			}			
 		}
 		
@@ -78,7 +78,7 @@ public class PlaceGear extends CommandGroup {
 		double distance = 0.0;
 		
 		if((lane == 1) || lane == 3) {
-			distance = -75;
+			distance = -77;
 		}
 		else {
 			distance = 0;
@@ -88,29 +88,21 @@ public class PlaceGear extends CommandGroup {
 	}
 	
 	public double autoGearDelay() {
-		return RobotPreferences.autoGearDelay();
+		if(AutoPreferences.isDebug()) {
+			return RobotPreferences.autoGearDelay();
+		}
+		
+		if(AutoPreferences.doGear() == false) {
+			return 0.0;
+		}
+		
+		return 1.0;
 	}
 	
     public PlaceGear() {
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
-
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
     	addSequential(new DriveStraightDistance("GearD1", autoGearD1()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveRotate("GearTurn", autoGearTurn()));
+    	addSequential(new DriveAccurateRotate("GearTurn", autoGearTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveStraightDistance("GearD2", autoGearD2()));
     	addSequential(new DoDelay(autoGearDelay()));

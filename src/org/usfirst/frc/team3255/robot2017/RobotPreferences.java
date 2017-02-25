@@ -6,131 +6,255 @@ public class RobotPreferences {
 
 	//Drivetrain
 	public static double drivetrainPulsesPerFoot() {
-		return Preferences.getInstance().getDouble("DrivePulsesPerFoot", 1.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 245.8;
+		}
+		
+		return Preferences.getInstance().getDouble("DrivePulsesPerFoot", 245.8);
 	}
 	
 	//Collector
 	public static double collectorLoadSpeed() {
-		return Preferences.getInstance().getDouble("CollectorLoadSpeed", 1.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.7;
+		}
+		
+		return Preferences.getInstance().getDouble("CollectorLoadSpeed", 0.7);
 	}
 	
 	public static double shootSpeed() {
+		if(AutoPreferences.isDebug() == false) {
+			return 1.0;
+		}
+		
 		return Preferences.getInstance().getDouble("CollectorShootSpeed", 1.0);
 	}
 	
 	//Climber
 	public static double climberPulsesPerFoot() {
-		return Preferences.getInstance().getDouble("ClimberPulsesPerFoot", 1.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 3753.0;
+		}
+		
+		return Preferences.getInstance().getDouble("ClimberPulsesPerFoot", 3753.0);
 	}
 	
 	public static double climberSwitchDistance() {
-		return Preferences.getInstance().getDouble("ClimberSwitchDistance", 1.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
+		return Preferences.getInstance().getDouble("ClimberSwitchDistance", 0.0);
 	}
 	
 	//Navigation
 	public static double navYawP() {
-		return Preferences.getInstance().getDouble("NavYawP", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.03;
+		}
+		
+		return Preferences.getInstance().getDouble("NavYawP", 0.03);
 	}
 
 	public static double navYawI() {
-		return Preferences.getInstance().getDouble("NavYawI", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.01;
+		}
+		
+		return Preferences.getInstance().getDouble("NavYawI", 0.01);
 	}
 
 	public static double navYawD() {
-		return Preferences.getInstance().getDouble("NavYawD", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.2;
+		}
+		
+		return Preferences.getInstance().getDouble("NavYawD", 0.2);
 	}
 	
 	public static double yawTolerance() {
-		return Preferences.getInstance().getDouble("YawTolerance", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 1.5;
+		}
+		
+		return Preferences.getInstance().getDouble("YawTolerance", 1.5);
 	}
 
 	public static double maxYawSpeed() {
-		return Preferences.getInstance().getDouble("MaxYawSpeed", 1.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.6;
+		}
+		
+		return Preferences.getInstance().getDouble("MaxYawSpeed", 0.6);
 	}
 
 	//Drivetrain PID
 	public static double driveDistance() {
-		return Preferences.getInstance().getDouble("DriveDistance", 1.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
+		return Preferences.getInstance().getDouble("DriveDistance", 0.0);
 	}
 	
 	public static double distanceTolerance() {
-		return Preferences.getInstance().getDouble("DistanceTolerance", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.4;
+		}
+		
+		return Preferences.getInstance().getDouble("DistanceTolerance", 0.4);
 	}
 
 	public static double driveDistanceP() {
-		return Preferences.getInstance().getDouble("DriveDistanceP", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.8;
+		}
+		
+		return Preferences.getInstance().getDouble("DriveDistanceP", 0.8);
 	}
 
 	public static double driveDistanceI() {
-		return Preferences.getInstance().getDouble("DriveDistanceI", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.6;
+		}
+		
+		return Preferences.getInstance().getDouble("DriveDistanceI", 0.6);
 	}
 
 	public static double driveDistanceD() {
-		return Preferences.getInstance().getDouble("DriveDistanceD", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 13.0;
+		}
+		
+		return Preferences.getInstance().getDouble("DriveDistanceD", 13.0);
 	}
 
 	public static double maxMoveSpeed() {
-		return Preferences.getInstance().getDouble("MaxMoveSpeed", 1.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.6;
+		}
+		
+		return Preferences.getInstance().getDouble("MaxMoveSpeed", 0.6);
 	}
 
 	public static double minMoveSpeed() {
-		return Preferences.getInstance().getDouble("MinMoveSpeed", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.2;
+		}
+		
+		return Preferences.getInstance().getDouble("MinMoveSpeed", 0.2);
 	}
 	
 	public static double minYawSpeed() {
-		return Preferences.getInstance().getDouble("MinYawSpeed", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 0.1;
+		}
+		
+		return Preferences.getInstance().getDouble("MinYawSpeed", 0.1);
 	}
 
 	//Autonomous
 	public static double autoGearD1() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoGearD1", 0.0);
 	}
 
 	public static double autoGearTurn() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoGearTurn", 0.0);
 	}
 
 	public static double autoGearD2() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoGearD2", 0.0);
 	}
 
 	public static double autoGearDelay() {
-		return Preferences.getInstance().getDouble("AutoGearDelay", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 1.0;
+		}
+		
+		return Preferences.getInstance().getDouble("AutoGearDelay", 1.0);
 	}
 
 	public static double autoShotD1() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoShotD1", 0.0);
 	}
 
 	public static double autoShotTurn() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoShotTurn", 0.0);
 	}
 
 	public static double autoShotD2() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoShotD2", 0.0);
 	}
 	
 	public static double autoShotTime() {
-		return Preferences.getInstance().getDouble("AutoShotTime", 0.0);
+		if(AutoPreferences.isDebug() == false) {
+			return 5.0;
+		}
+		
+		return Preferences.getInstance().getDouble("AutoShotTime", 5.0);
 	}
 	
 	public static double autoCrossD1() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoCrossD1", 0.0);
 	}
 	
 	public static double autoCrossTurn() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoCrossTurn", 0.0);
 	}
 	
 	public static double autoCrossD2() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoCrossD2", 0.0);
 	}
 	
 	public static double autoDoDelay() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
 		return Preferences.getInstance().getDouble("AutoDoDelay", 0.0);
 	}
 	
 	public static int targetCount() {
+		if(AutoPreferences.isDebug() == false) {
+			return 5;
+		}
+		
 		return Preferences.getInstance().getInt("TargetCount", 5);
 	}
 }

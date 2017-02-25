@@ -13,6 +13,7 @@ public class NavigationYawPID extends PIDSubsystem {
 	double output = 0.0;
 	boolean outputValid = false;
 	int targetCounter = 0;
+	double tolerance = 0.0;
 	
     // Initialize your subsystem here
     public NavigationYawPID() {
@@ -22,6 +23,7 @@ public class NavigationYawPID extends PIDSubsystem {
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
+    	setRawTolerance(RobotPreferences.yawTolerance());
     }
 
     public void enable() {
@@ -98,6 +100,10 @@ public class NavigationYawPID extends PIDSubsystem {
     	return output;
     }
     
+	public void setRawTolerance(double tolerance) {
+		this.tolerance = tolerance;
+	}
+    
     public boolean onRawTarget() {
     	double setPoint = getPIDController().getSetpoint();
     	double calculatedYaw = getCalculatedYaw();
@@ -105,7 +111,7 @@ public class NavigationYawPID extends PIDSubsystem {
     	
     	System.err.println("onRawTarget: yaw = " + calculatedYaw + " error = " + error);
     	
-    	if (Math.abs(error) < RobotPreferences.yawTolerance()) {
+    	if (Math.abs(error) < tolerance) {
     		targetCounter = targetCounter + 1;
     	}
     	else {
