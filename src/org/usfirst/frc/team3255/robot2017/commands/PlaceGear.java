@@ -22,11 +22,16 @@ public class PlaceGear extends CommandGroup {
 		int lane = AutoPreferences.getLane();
 		double distance = 0.0;
 		
-		if((lane == 1) || lane == 3) {
+		if(lane == 1) {
 			distance = -57.2;
 		}
-		else {
-			distance = -80;
+		
+		if(lane == 2) {
+			distance = -80.0;
+		}
+		
+		if(lane == 3) {
+			distance = -73.0;
 		}
 
 		return distance;
@@ -50,7 +55,7 @@ public class PlaceGear extends CommandGroup {
 				angle = -54;
 			}
 			else if(lane == 3) {
-				angle = 54;
+				angle = 60;
 			}
 		}
 		else {
@@ -58,7 +63,7 @@ public class PlaceGear extends CommandGroup {
 				angle = 54;
 			}
 			else if(lane == 3) {
-				angle = -54;
+				angle = -60;
 			}			
 		}
 		
@@ -77,11 +82,16 @@ public class PlaceGear extends CommandGroup {
 		int lane = AutoPreferences.getLane();
 		double distance = 0.0;
 		
-		if((lane == 1) || lane == 3) {
+		if(lane == 1) {
 			distance = -77;
 		}
-		else {
+		
+		if(lane == 2) {
 			distance = 0;
+		}
+		
+		if(lane == 3) {
+			distance = -72;
 		}
 
 		return distance;
