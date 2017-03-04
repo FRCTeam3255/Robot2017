@@ -15,11 +15,12 @@ public class CrossLine extends CommandGroup {
 			return RobotPreferences.autoCrossD1();
 		}
 		
-		if((AutoPreferences.doCross() == false || (AutoPreferences.getLane() == 0))) {
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doCross() == false || (lane == 0))) {
 			return 0.0;
 		}
-		
-		int lane = AutoPreferences.getLane();
+
 		double distance = 0.0;
 		
 		if(AutoPreferences.doShot() == true) {
@@ -58,11 +59,12 @@ public class CrossLine extends CommandGroup {
 			return RobotPreferences.autoCrossTurn();
 		}
 		
-		if((AutoPreferences.doCross() == false) || (AutoPreferences.getLane() == 0)) {
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doCross() == false) || (lane == 0)) {
 			return 0.0;
 		}
 		
-		int lane = AutoPreferences.getLane();
 		double angle = 0.0;
 		
 		if(AutoPreferences.doShot() == true) {
@@ -105,11 +107,12 @@ public class CrossLine extends CommandGroup {
 			return RobotPreferences.autoCrossD2();
 		}
 		
-		if((AutoPreferences.doCross() == false || (AutoPreferences.getLane() == 0))) {
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doCross() == false || (lane == 0))) {
 			return 0.0;
 		}
 		
-		int lane = AutoPreferences.getLane();
 		double distance = 0.0;
 		
 		if(AutoPreferences.doShot() == true) {

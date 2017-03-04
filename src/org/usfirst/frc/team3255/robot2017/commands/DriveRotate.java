@@ -28,8 +28,6 @@ public class DriveRotate extends Command {
     	Robot.drivetrain.shiftUp();
     	Robot.telemetry.setAutonomousStatus("Starting " + commandName + ": " + yaw);
 
-    	System.out.println("Starting " + commandName + ": " + yaw);
-
     	Robot.navYawPID.disable();
 
     	Robot.navigation.resetYaw();
@@ -60,8 +58,6 @@ public class DriveRotate extends Command {
     	Robot.drivetrain.arcadeDrive(0.0, 0.0);
 
     	Robot.telemetry.setAutonomousStatus("Finished " + commandName);
-
-    	System.out.println("Finished " + commandName);
     	
     	Robot.navYawPID.disable();
     }

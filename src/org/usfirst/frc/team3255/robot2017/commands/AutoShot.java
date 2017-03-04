@@ -15,11 +15,12 @@ public class AutoShot extends CommandGroup {
 			return RobotPreferences.autoShotD1();
 		}
 		
-		if((AutoPreferences.doShot() == false) || (AutoPreferences.getLane() == 0)) {
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doShot() == false) || (lane == 0)) {
 			return 0.0;
 		}
 		
-		int lane = AutoPreferences.getLane();
 		double distance = 0.0;
 		
 		if((AutoPreferences.doGear() == false) && lane == 1) {
@@ -54,12 +55,13 @@ public class AutoShot extends CommandGroup {
 			return RobotPreferences.autoShotTurn();
 		}
 		
-		if((AutoPreferences.doShot() == false) || (AutoPreferences.getLane() == 0)) {
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doShot() == false) || (lane == 0)) {
 			return 0.0;
 		}
 		
 		double angle = 0;
-		int lane = AutoPreferences.getLane();
 		
 		if(AutoPreferences.isRedAlliance() == true) {
 			if((AutoPreferences.doGear() == false) && lane == 1) {
@@ -121,11 +123,12 @@ public class AutoShot extends CommandGroup {
 			return RobotPreferences.autoShotD2();
 		}
 		
-		if((AutoPreferences.doShot() == false) || (AutoPreferences.getLane() == 0)) {
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doShot() == false) || (lane == 0)) {
 			return 0.0;
 		}
-		
-		int lane = AutoPreferences.getLane();
+
 		double distance = 0.0;
 		
 		if((AutoPreferences.doGear() == false) && lane == 1) {

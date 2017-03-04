@@ -48,25 +48,6 @@ public class NavigationYawPID extends PIDSubsystem {
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
     	double yaw = Robot.navigation.getYaw();
 
-//    	System.err.print("getCalculatedYaw: raw = "+ yaw);
-
-/*		if(yaw < 0) {
-    		yaw = yaw + 360;
-    	}
-
-    	
-    	// compute what the current error is based on this yaw value
-    	double error = this.getSetpoint() - yaw; 	
-   
-    	if(error > 180) {;
-    		yaw = yaw + 360;
-    	}
-    	else if(error < -180) {
-    		yaw = yaw - 360;
-    	}
-*/    	
-  //  	System.err.println(" calculated = "+ yaw);
-
         return yaw;
     }
     
@@ -108,8 +89,6 @@ public class NavigationYawPID extends PIDSubsystem {
     	double setPoint = getPIDController().getSetpoint();
     	double calculatedYaw = getCalculatedYaw();
     	double error = setPoint - calculatedYaw;
-    	
-    	System.err.println("onRawTarget: yaw = " + calculatedYaw + " error = " + error);
     	
     	if (Math.abs(error) < tolerance) {
     		targetCounter = targetCounter + 1;

@@ -15,11 +15,12 @@ public class PlaceGear extends CommandGroup {
 			return RobotPreferences.autoGearD1();
 		}
 		
-		if((AutoPreferences.doGear() == false) || (AutoPreferences.getLane() == 0)) {
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doGear() == false) || (lane == 0)) {
 			return 0.0;
 		}
 
-		int lane = AutoPreferences.getLane();
 		double distance = 0.0;
 		
 		if(lane == 1) {
@@ -42,13 +43,14 @@ public class PlaceGear extends CommandGroup {
 			return RobotPreferences.autoGearTurn();
 		}
 		
-		if((AutoPreferences.doGear() == false) || (AutoPreferences.getLane() == 0)) {
+		int lane = AutoPreferences.getLane();
+
+		
+		if((AutoPreferences.doGear() == false) || (lane == 0)) {
 			return 0.0;
 		}
 		
 		double angle = 0;
-
-		int lane = AutoPreferences.getLane();
 
 		if(AutoPreferences.isRedAlliance()) {
 			if(lane == 1) {
@@ -75,11 +77,12 @@ public class PlaceGear extends CommandGroup {
 			return RobotPreferences.autoGearD2();
 		}
 		
-		if((AutoPreferences.doGear() == false) || (AutoPreferences.getLane() == 0)) {
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doGear() == false) || (lane == 0)) {
 			return 0.0;
 		}
 
-		int lane = AutoPreferences.getLane();
 		double distance = 0.0;
 		
 		if(lane == 1) {
