@@ -32,7 +32,7 @@ public class PlaceGear extends CommandGroup {
 		}
 		
 		if(lane == 3) {
-			distance = -73.0;
+			distance = -64.4;
 		}
 
 		return distance;
@@ -86,7 +86,7 @@ public class PlaceGear extends CommandGroup {
 		double distance = 0.0;
 		
 		if(lane == 1) {
-			distance = -77;
+			distance = -81;
 		}
 		
 		if(lane == 2) {
@@ -94,7 +94,7 @@ public class PlaceGear extends CommandGroup {
 		}
 		
 		if(lane == 3) {
-			distance = -72;
+			distance = -66.4;
 		}
 
 		return distance;

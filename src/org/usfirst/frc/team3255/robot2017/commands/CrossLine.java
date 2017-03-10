@@ -40,13 +40,13 @@ public class CrossLine extends CommandGroup {
 			}
 			else {
 				if(lane == 1) {
-					distance = 24;
+					distance = 26.9;
 				}
 				if(lane == 2) {
 					distance = 52;
 				}
 				if(lane == 3) {
-					distance = 25;
+					distance = 17.5;
 				}
 			}
 		}
@@ -84,7 +84,7 @@ public class CrossLine extends CommandGroup {
 			}
 			else {
 				if(lane == 1) {
-					angle = 90;
+					angle = -33.9;
 				}
 				if(lane == 2) {
 					angle = -45;
@@ -132,13 +132,13 @@ public class CrossLine extends CommandGroup {
 			}
 			else {
 				if(lane == 1) {
-					distance = -48;
+					distance = -71.6;
 				}
 				if(lane == 2) {
 					distance = -207;
 				}
 				if(lane == 3) {
-					distance = -109.6;
+					distance = -113.8;
 				}
 			}
 		}
