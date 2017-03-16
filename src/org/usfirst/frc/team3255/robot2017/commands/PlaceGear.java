@@ -24,7 +24,7 @@ public class PlaceGear extends CommandGroup {
 		double distance = 0.0;
 		
 		if(lane == 1) {
-			distance = -57.2;
+			distance = -60.2;
 		}
 		
 		if(lane == 2) {
