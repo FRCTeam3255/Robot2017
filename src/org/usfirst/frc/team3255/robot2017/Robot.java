@@ -6,6 +6,7 @@ import org.usfirst.frc.team3255.robot2017.subsystems.Climber;
 import org.usfirst.frc.team3255.robot2017.subsystems.Collector;
 import org.usfirst.frc.team3255.robot2017.subsystems.Drivetrain;
 import org.usfirst.frc.team3255.robot2017.subsystems.DrivetrainDistancePID;
+import org.usfirst.frc.team3255.robot2017.subsystems.GearCollector;
 import org.usfirst.frc.team3255.robot2017.subsystems.Navigation;
 import org.usfirst.frc.team3255.robot2017.subsystems.NavigationYawPID;
 import org.usfirst.frc.team3255.robot2017.subsystems.Telemetry;
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Navigation navigation = null;
 	public static NavigationYawPID navYawPID = null;
 	public static DrivetrainDistancePID drivetrainDistancePID = null;
+	public static GearCollector gearcollector = null;
 	
 	public static Telemetry telemetry = null;
 	public static OI oi;
@@ -52,6 +54,7 @@ public class Robot extends IterativeRobot {
 		navigation = new Navigation();
 		navYawPID = new NavigationYawPID();
 		drivetrainDistancePID = new DrivetrainDistancePID();
+		gearcollector = new GearCollector();
 		
 		telemetry = new Telemetry();
 		oi = new OI();
