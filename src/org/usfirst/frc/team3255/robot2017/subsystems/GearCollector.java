@@ -30,15 +30,25 @@ public class GearCollector extends Subsystem {
 	}
 	
 	//CANTalons
-	public void intakeRelease() {
-		setGearSpeed(-1.0);	
-	}
-		
+	
 	public void setGearSpeed(double speed) {
 		gearTalon.set(speed);
 	}
 	
+	public void intakeCollect() {
+		setGearSpeed(1.0);
+	}
+	
+	public void intakeRelease() {
+		setGearSpeed(-1.0);	
+	}
+	
+	public void intakeStop() {
+		setGearSpeed(0.0);
+	}
+
 	//Solenoids
+	
 	public void deployPiston() {
 		gearSolenoid.set(Value.kForward);
 	}

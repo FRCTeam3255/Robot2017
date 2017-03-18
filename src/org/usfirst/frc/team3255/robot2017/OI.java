@@ -42,7 +42,8 @@ public class OI {
 	Button S5 = new JoystickButton(shooterStick, 5);
 	Button S7 = new JoystickButton(shooterStick, 7);
 	Button S8 = new JoystickButton(shooterStick, 8);
-//	Button S10 = new JoystickButton(shooterStick, 10);
+	Button S9 = new JoystickButton(shooterStick, 9);
+	Button S10 = new JoystickButton(shooterStick, 10);
 	Button S11 = new JoystickButton(shooterStick, 11);
 	Button S12 = new JoystickButton(shooterStick, 12);
 	
@@ -64,18 +65,17 @@ public class OI {
 		//ShooterStick
 		S1.whenPressed(new CollectorShoot());
 		S1.whenReleased(new CollectorStop());
-		S2.whenReleased(new CollectorStop());
 		S3.whenPressed(new CollectorCollect());
 		S4.whenPressed(new CollectorStop());
 		S5.whenPressed(new CollectorReverse());
 		S5.whenReleased(new CollectorStop());
+		S7.whenPressed(new GearDeploy());
+		S8.whenPressed(new GearRetract());
+		S9.whenPressed(new ClimbLowSpeed());
+		S9.whenReleased(new ClimberStop());
+		S10.whenPressed(new ClimbHighSpeed());
+		S10.whenReleased(new ClimberStop());
 		// S10 is shooter lowSpeed while held - see SetShooterSpeed
-//		S10.whenPressed(new SetShooterSpeed());
-		S7.whenPressed(new ClimbLowSpeed());
-		S7.whenReleased(new ClimberStop());
-		S8.whenPressed(new ClimbHighSpeed());
-		S8.whenReleased(new ClimberStop());
-		
 		
 		//DriverStick
 		D5.whenPressed(new DriveShiftDown());

@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Navigation navigation = null;
 	public static NavigationYawPID navYawPID = null;
 	public static DrivetrainDistancePID drivetrainDistancePID = null;
-	public static GearCollector gearcollector = null;
+	public static GearCollector gearCollector = null;
 	
 	public static Telemetry telemetry = null;
 	public static OI oi;
@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
 		navigation = new Navigation();
 		navYawPID = new NavigationYawPID();
 		drivetrainDistancePID = new DrivetrainDistancePID();
-		gearcollector = new GearCollector();
+		gearCollector = new GearCollector();
 		
 		telemetry = new Telemetry();
 		oi = new OI();
