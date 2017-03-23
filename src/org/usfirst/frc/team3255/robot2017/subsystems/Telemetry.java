@@ -32,7 +32,7 @@ public class Telemetry extends Subsystem {
 	public void update() {		
 		//Drivetrain
 		SmartDashboard.putNumber("Drivetrain Encoder Count", Robot.drivetrain.getEncoderCount());
-		SmartDashboard.putNumber("Drivetrain Encoder Distance", Robot.drivetrain.getEncoderDistance() / 12.0);
+		SmartDashboard.putNumber("Drivetrain Encoder Distance", Robot.drivetrain.getEncoderDistance() * 12);
 		SmartDashboard.putBoolean("lowGear", Robot.drivetrain.isLowGear());
 
 		//Collector

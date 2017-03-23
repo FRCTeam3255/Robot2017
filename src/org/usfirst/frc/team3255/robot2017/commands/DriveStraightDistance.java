@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
+import org.usfirst.frc.team3255.robot2017.AutoPreferences;
 import org.usfirst.frc.team3255.robot2017.Robot;
 import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
@@ -40,6 +41,16 @@ public class DriveStraightDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.drivetrain.arcadeDrive(Robot.drivetrainDistancePID.getOutput(), Robot.navYawPID.getOutput());
+    	
+    	if(AutoPreferences.isDebug()) {
+	    	if (Robot.drivetrainDistancePID.onRawTarget()) {
+	    		System.out.println("Distance Met");
+	    	}
+	    	
+	    	if (Robot.navYawPID.onRawTarget()) {
+	    		System.out.println("Rotation Met");
+	    	}
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

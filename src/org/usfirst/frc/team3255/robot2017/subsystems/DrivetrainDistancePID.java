@@ -24,7 +24,7 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	super(0, 0, 0);
     	this.setSetpoint(0.0);
     	
-    	setRawTolerance(RobotPreferences.distanceTolerance());
+    	setRawTolerance(RobotPreferences.distanceTolerance() / 12);
     }
 
     public void enable() {
