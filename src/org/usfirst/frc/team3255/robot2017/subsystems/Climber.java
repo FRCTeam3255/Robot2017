@@ -33,7 +33,7 @@ public class Climber extends Subsystem {
 	}
 	
 	public void forwardHighSpeed() {
-		setClimberSpeed(-0.7);
+		setClimberSpeed(-1.0);
 	}
 	
 	public void stop() {
@@ -42,7 +42,7 @@ public class Climber extends Subsystem {
 	
 	private void setClimberSpeed(double speed) {
 		leftTalon.set(speed);
-		rightTalon.set(-speed);
+		rightTalon.set(speed);
 	}
 
     public void initDefaultCommand() {
