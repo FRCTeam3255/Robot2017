@@ -47,6 +47,11 @@ public class RobotPreferences {
 		return Preferences.getInstance().getDouble("ClimberSwitchDistance", 0.0);
 	}
 	
+	//GearCollector
+	public static double gearRetractDelay() {
+		return 0.5;
+	}
+	
 	//Navigation
 	public static double navYawP() {
 		if(AutoPreferences.isDebug() == false) {

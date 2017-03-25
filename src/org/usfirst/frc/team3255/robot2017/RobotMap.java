@@ -40,8 +40,8 @@ public class RobotMap {
 	public static final int DRIVETRAIN_SHIFT_UP = 0;
 	public static final int DRIVETRAIN_SHIFT_DOWN = 1;
 
-	public static final int GEAR_SHIFT_UP = 2;
-	public static final int GEAR_SHIFT_DOWN = 3;
+	public static final int GEAR_DEPLOY = 2;
+	public static final int GEAR_RETRACT = 3;
 	
 	//Joysticks
 	public static final int JOYSTICK_DRIVER = 0;

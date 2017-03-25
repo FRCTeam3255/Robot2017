@@ -69,8 +69,10 @@ public class OI {
 		S4.whenPressed(new CollectorStop());
 		S5.whenPressed(new CollectorReverse());
 		S5.whenReleased(new CollectorStop());
-		S7.whenPressed(new GearDeploy());
-		S8.whenPressed(new GearRetract());
+		S7.whenPressed(new GearPickupFromFloor());
+		S7.whenReleased(new GearRetract());
+		S8.whenPressed(new GearDeployToPeg());
+		S8.whenReleased(new GearRetract());
 		S9.whenPressed(new ClimbLowSpeed());
 		S9.whenReleased(new ClimberStop());
 		S10.whenPressed(new ClimbHighSpeed());

@@ -26,7 +26,7 @@ public class GearCollector extends Subsystem {
 		gearTalon.setSafetyEnabled(false);
 		
 		//Solenoids
-		gearSolenoid = new DoubleSolenoid(RobotMap.GEAR_SHIFT_UP, RobotMap.GEAR_SHIFT_DOWN);
+		gearSolenoid = new DoubleSolenoid(RobotMap.GEAR_DEPLOY, RobotMap.GEAR_RETRACT);
 	}
 	
 	//CANTalons
