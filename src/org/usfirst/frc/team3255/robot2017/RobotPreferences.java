@@ -50,7 +50,7 @@ public class RobotPreferences {
 	//Navigation
 	public static double navYawP() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.03;
+			return 0.3;
 		}
 		
 		return Preferences.getInstance().getDouble("NavYawP", 0.03);
@@ -58,7 +58,7 @@ public class RobotPreferences {
 
 	public static double navYawI() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.01;
+			return 0.0;
 		}
 		
 		return Preferences.getInstance().getDouble("NavYawI", 0.01);
@@ -66,7 +66,7 @@ public class RobotPreferences {
 
 	public static double navYawD() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.2;
+			return 0.5;
 		}
 		
 		return Preferences.getInstance().getDouble("NavYawD", 0.2);
@@ -74,7 +74,7 @@ public class RobotPreferences {
 	
 	public static double yawTolerance() {
 		if(AutoPreferences.isDebug() == false) {
-			return 1.5;
+			return 1.0;
 		}
 		
 		return Preferences.getInstance().getDouble("YawTolerance", 1.5);
@@ -86,6 +86,14 @@ public class RobotPreferences {
 		}
 		
 		return Preferences.getInstance().getDouble("MaxYawSpeed", 0.6);
+	}
+	
+	public static double minYawSpeed() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
+		return Preferences.getInstance().getDouble("MinYawSpeed", 0.1);
 	}
 
 	//Drivetrain PID
@@ -99,7 +107,7 @@ public class RobotPreferences {
 	
 	public static double distanceTolerance() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.4;
+			return 0.03;
 		}
 		
 		return Preferences.getInstance().getDouble("DistanceTolerance", 0.4);
@@ -107,7 +115,7 @@ public class RobotPreferences {
 
 	public static double driveDistanceP() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.8;
+			return 5.5;
 		}
 		
 		return Preferences.getInstance().getDouble("DriveDistanceP", 0.8);
@@ -115,7 +123,7 @@ public class RobotPreferences {
 
 	public static double driveDistanceI() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.6;
+			return 0.7;
 		}
 		
 		return Preferences.getInstance().getDouble("DriveDistanceI", 0.6);
@@ -123,7 +131,7 @@ public class RobotPreferences {
 
 	public static double driveDistanceD() {
 		if(AutoPreferences.isDebug() == false) {
-			return 13.0;
+			return 9.0;
 		}
 		
 		return Preferences.getInstance().getDouble("DriveDistanceD", 13.0);
@@ -131,7 +139,7 @@ public class RobotPreferences {
 
 	public static double maxMoveSpeed() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.6;
+			return 0.8;
 		}
 		
 		return Preferences.getInstance().getDouble("MaxMoveSpeed", 0.6);
@@ -139,18 +147,10 @@ public class RobotPreferences {
 
 	public static double minMoveSpeed() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.2;
+			return 0.0;
 		}
 		
 		return Preferences.getInstance().getDouble("MinMoveSpeed", 0.2);
-	}
-	
-	public static double minYawSpeed() {
-		if(AutoPreferences.isDebug() == false) {
-			return 0.1;
-		}
-		
-		return Preferences.getInstance().getDouble("MinYawSpeed", 0.1);
 	}
 
 	//Autonomous
