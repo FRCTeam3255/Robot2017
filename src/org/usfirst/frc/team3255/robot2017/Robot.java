@@ -79,6 +79,11 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		telemetry.update();
+		
+		if(AutoPreferences.isReset()) {
+			drivetrain.resetEncoderCount();
+			navigation.resetYaw();
+		}
 	}
 
 	/**

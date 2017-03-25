@@ -41,4 +41,8 @@ public class AutoPreferences {
 	public static boolean isDebug() {
 		return preferencesStick.getRawButton(5);
 	}
+	
+	public static boolean isReset() {
+		return preferencesStick.getRawButton(10);
+	}
 }
