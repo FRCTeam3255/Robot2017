@@ -123,5 +123,9 @@ public class PlaceGear extends CommandGroup {
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveStraightDistance("GearD2", autoGearD2()));
     	addSequential(new DoDelay(autoGearDelay()));
+    	addSequential(new GearDeployToPeg());
+    	addSequential(new DoDelay(autoGearDelay()));
+    	addSequential(new DriveDistance("Backup", 12.0));
+    	addSequential(new GearRetract());
     }
 }
