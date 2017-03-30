@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.RobotMap;
+import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
 import com.ctre.CANTalon;
 
@@ -36,11 +37,11 @@ public class GearCollector extends Subsystem {
 	}
 	
 	public void intakeCollect() {
-		setGearSpeed(1.0);
+		setGearSpeed(0.4);
 	}
 	
 	public void intakeRelease() {
-		setGearSpeed(-1.0);	
+		setGearSpeed(-0.3);
 	}
 	
 	public void intakeStop() {

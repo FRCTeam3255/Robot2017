@@ -262,4 +262,13 @@ public class RobotPreferences {
 		
 		return Preferences.getInstance().getInt("TargetCount", 5);
 	}
+
+	//testing
+	public static double gearCollectSpeed() {
+		return 0.3;
+	}
+
+	public static double gearReleaseSpeed() {
+		return -0.2;
+	}
 }

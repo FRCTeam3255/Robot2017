@@ -17,8 +17,8 @@ public class GearDeployToPeg extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.gearCollector.intakeRelease();
     	Robot.gearCollector.deployPiston();
-    //	Robot.gearCollector.intakeRelease();
     }
 
     // Called repeatedly when this Command is scheduled to run
