@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
+import org.usfirst.frc.team3255.robot2017.AutoPreferences;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -24,9 +26,14 @@ public class Autonomous extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	if (AutoPreferences.doTwoGear()){
+        	addSequential(new PlaceTwoGear());
+    	}
+    	else{
     	addSequential(new DriveShiftUp());
     	addSequential(new PlaceGear());
     	addSequential(new AutoShot());
     	addSequential(new CrossLine());
+    	}
     }
 }

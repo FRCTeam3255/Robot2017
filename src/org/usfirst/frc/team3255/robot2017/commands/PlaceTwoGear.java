@@ -21,6 +21,7 @@ public class PlaceTwoGear extends CommandGroup {
 			return 0.0;
 		}
 		
+		double distance = -70.0;
 		
 		return distance;
 	}
@@ -37,6 +38,7 @@ public class PlaceTwoGear extends CommandGroup {
 			return 0.0;
 		}
 		
+		double distance = 55.0;
 		
 		return distance;
 	}
@@ -108,6 +110,8 @@ public class PlaceTwoGear extends CommandGroup {
     	addSequential(new DriveStraightDistance("TwoGearD2", autoTwoGearD2()));
     	addSequential(new GearRetract());
     	addSequential(new DriveAccurateRotate("TwoGearT1", autoTwoGearTurn()));
+    	addSequential(new GearPickupFromFloor());
+    	addSequential(new DriveStraightDistance("TwoGearD3", autoTwoGearD3()));
     	addSequential(new DoDelay(autoTwoGearDelay()));
     	addSequential(new GearRetract());
     	//reverse
