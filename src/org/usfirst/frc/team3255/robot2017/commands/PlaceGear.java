@@ -26,7 +26,7 @@ public class PlaceGear extends CommandGroup {
 		if(lane == 1) {
 //			SD Values
 //			distance = -60.2;
-			distance = -50.0;
+			distance = -46.0;
 		}
 		
 		if(lane == 2) {
@@ -56,7 +56,7 @@ public class PlaceGear extends CommandGroup {
 
 		if(AutoPreferences.isRedAlliance()) {
 			if(lane == 1) {
-				angle = -54;
+				angle = -42;
 			}
 			else if(lane == 3) {
 				angle = 60;
@@ -90,7 +90,7 @@ public class PlaceGear extends CommandGroup {
 		if(lane == 1) {
 	//		SD Values
 	//		distance = -81;
-			distance = -68.0;
+			distance = -44.0;
 		}
 		
 		if(lane == 2) {

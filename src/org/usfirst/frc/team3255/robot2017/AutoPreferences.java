@@ -45,4 +45,8 @@ public class AutoPreferences {
 	public static boolean isReset() {
 		return preferencesStick.getRawButton(10);
 	}
+
+	public static boolean doTwoGear() {
+		return preferencesStick.getRawButton(9);
+	}
 }

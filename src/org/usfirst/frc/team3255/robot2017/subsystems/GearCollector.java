@@ -1,8 +1,6 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.RobotMap;
-import org.usfirst.frc.team3255.robot2017.RobotPreferences;
-
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
