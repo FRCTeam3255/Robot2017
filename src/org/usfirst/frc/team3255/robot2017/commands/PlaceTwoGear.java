@@ -99,7 +99,23 @@ public class PlaceTwoGear extends CommandGroup {
 			return 0.0;
 		}
 		
-		return 1.0;
+		return 0.0;
+	}
+	
+	public double autoTwoGearD4() {
+		if(AutoPreferences.isDebug()) {
+			return RobotPreferences.autoTwoGearD2();
+		}
+		
+		int lane = AutoPreferences.getLane();
+		
+		if((AutoPreferences.doTwoGear() == false || (lane == 0))) {
+			return 0.0;
+		}
+		
+		double distance = -40.0;
+		
+		return distance;
 	}
 	
     public PlaceTwoGear() {
@@ -115,9 +131,9 @@ public class PlaceTwoGear extends CommandGroup {
     	addSequential(new DoDelay(autoTwoGearDelay()));
     	addSequential(new GearRetract());
     	//reverse
-    	addSequential(new DriveStraightDistance("TwoGearD4", -autoTwoGearD3()));
-    	addSequential(new DriveAccurateRotate("TwoGearT2", -autoTwoGearTurn()));
-    	addSequential(new DriveStraightDistance("TwoGearD5", -autoTwoGearD2()));
+    	addSequential(new DriveStraightDistance("RevTwoGearD3", -autoTwoGearD3()));
+    	addSequential(new DriveAccurateRotate("RevTwoGearT1", -autoTwoGearTurn()));
+    	addSequential(new DriveStraightDistance("TwoGearD4", autoTwoGearD4()));
     	addSequential(new GearDeployToPeg());
     	addSequential(new DoDelay(autoTwoGearDelay()));
     	addSequential(new DriveDistance("Backup", 12.0));
