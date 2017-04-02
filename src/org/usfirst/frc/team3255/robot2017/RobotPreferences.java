@@ -87,10 +87,10 @@ public class RobotPreferences {
 
 	public static double maxYawSpeed() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.6;
+			return 0.55;
 		}
 		
-		return Preferences.getInstance().getDouble("MaxYawSpeed", 0.6);
+		return Preferences.getInstance().getDouble("MaxYawSpeed", 0.55);
 	}
 	
 	public static double minYawSpeed() {
@@ -144,7 +144,7 @@ public class RobotPreferences {
 
 	public static double maxMoveSpeed() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.8;
+			return 0.7;
 		}
 		
 		return Preferences.getInstance().getDouble("MaxMoveSpeed", 0.8);

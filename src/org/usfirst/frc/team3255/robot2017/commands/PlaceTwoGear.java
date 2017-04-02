@@ -21,7 +21,7 @@ public class PlaceTwoGear extends CommandGroup {
 			return 0.0;
 		}
 		
-		double distance = -70.0;
+		double distance = -72.0;
 		
 		return distance;
 	}
@@ -61,10 +61,10 @@ public class PlaceTwoGear extends CommandGroup {
 		}
 		
 		if(lane == 1) {
-			angle = -90.0;
+			angle = 90.0;
 		}
 		else {
-			angle = 90.0;
+			angle = -90.0;
 		}
 		
 		if(AutoPreferences.isRedAlliance() == false) {
@@ -85,7 +85,7 @@ public class PlaceTwoGear extends CommandGroup {
 			return 0.0;
 		}
 		
-		double distance = -24.0;
+		double distance = -36.0;
 		
 		return distance;
 	}

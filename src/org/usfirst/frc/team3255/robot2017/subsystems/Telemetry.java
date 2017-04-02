@@ -52,6 +52,7 @@ public class Telemetry extends Subsystem {
 		SmartDashboard.putBoolean("Do Cross", AutoPreferences.doCross());
 		SmartDashboard.putBoolean("Competition Mode", !AutoPreferences.isDebug());
 		SmartDashboard.putBoolean("Resetting", AutoPreferences.isReset());
+		SmartDashboard.putBoolean("Two Gear", AutoPreferences.doTwoGear());
 	}
 	
 	public void setAutonomousStatus(String statusText) {

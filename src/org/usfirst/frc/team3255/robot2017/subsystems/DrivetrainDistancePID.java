@@ -27,18 +27,21 @@ public class DrivetrainDistancePID extends PIDSubsystem {
     	setRawTolerance(RobotPreferences.distanceTolerance() / 12);
     }
 
-    public void enable() {
+    public void enable(double maxSpeed) {
     	this.getPIDController().setPID(
     			RobotPreferences.driveDistanceP(),
     			RobotPreferences.driveDistanceI(),
     			RobotPreferences.driveDistanceD());
     	
-    	double maxSpeed = RobotPreferences.maxMoveSpeed();
     	this.setOutputRange(-maxSpeed, maxSpeed);
     	
     	outputValid = false;
     	
     	super.enable();
+    }
+    
+    public void enable() {
+    	enable(RobotPreferences.maxMoveSpeed());
     }
     
     protected double returnPIDInput() {
