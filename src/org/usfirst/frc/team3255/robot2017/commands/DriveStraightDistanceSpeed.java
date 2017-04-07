@@ -14,6 +14,7 @@ public class DriveStraightDistanceSpeed extends Command {
 	double distance;
 	String commandName;
 	double maxSpeed;
+	private double expireTime;
 	
 	public DriveStraightDistanceSpeed(String name, double inches, double speed) {
         // Use requires() here to declare subsystem dependencies
@@ -38,6 +39,8 @@ public class DriveStraightDistanceSpeed extends Command {
     	Robot.drivetrainDistancePID.enable(maxSpeed);
     	Robot.navYawPID.setSetpoint(0.0);
     	Robot.navYawPID.enable();
+    	
+    	expireTime = timeSinceInitialized() + 5.0;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -57,6 +60,12 @@ public class DriveStraightDistanceSpeed extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	double timeNow = timeSinceInitialized();
+		System.err.println("expire=" + expireTime + " timeNow=" + timeNow);
+    	if(timeNow >= expireTime) {
+    		System.err.println("TimedOut");
+    		return true;
+    	}
     	//taking the absolute value of the encoder distance and compares it to user input distance
         return (Robot.drivetrainDistancePID.onRawTarget() && Robot.navYawPID.onRawTarget());
     }

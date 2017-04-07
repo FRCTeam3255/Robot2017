@@ -25,8 +25,8 @@ public class PlaceGear extends CommandGroup {
 		
 		if(lane == 1) {
 //			SD Values
-//			distance = -60.2;
-			distance = -53.0;
+			distance = -60.2;
+//			distance = -53.0;
 		}
 		
 		if(lane == 2) {
@@ -89,12 +89,12 @@ public class PlaceGear extends CommandGroup {
 		
 		if(lane == 1) {
 	//		SD Values
-	//		distance = -81;
-			distance = -77.0;
+			distance = -81;
+	//		distance = -77.0;
 		}
 		
 		if(lane == 2) {
-			distance = -80.0;
+			distance = -78.0;
 		}
 		
 		if(lane == 3) {
