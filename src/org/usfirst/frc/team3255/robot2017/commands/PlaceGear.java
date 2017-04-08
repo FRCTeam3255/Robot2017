@@ -64,7 +64,7 @@ public class PlaceGear extends CommandGroup {
 		}
 		else {
 			if(lane == 1) {
-				angle = 54;
+				angle = 57;
 			}
 			else if(lane == 3) {
 				angle = -60;
@@ -121,7 +121,7 @@ public class PlaceGear extends CommandGroup {
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveAccurateRotate("GearTurn", autoGearTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveStraightDistanceSpeed("GearD2", autoGearD2(), 0.55));
+    	addSequential(new DriveStraightDistanceSpeed("GearD2", autoGearD2(), 0.5));
     	addSequential(new DoDelay(autoGearDelay()));
     	addSequential(new PlaceGearBackup());
     	addSequential(new GearRetract());
