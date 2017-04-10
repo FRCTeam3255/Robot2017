@@ -26,8 +26,8 @@ public class Vision extends Subsystem implements Runnable {
 	private boolean frontCameraSelected = true;
 	private UsbCamera selectedUsbCamera = null;
 
-	public static final int CAMERA_WIDTH = 320;
-	public static final int CAMERA_HEIGHT = 240;
+	public static final int CAMERA_WIDTH = 160; //320
+	public static final int CAMERA_HEIGHT = 120; //240
 	public static final int CAMERA_FPS = 30;
 	
 	public Vision() {
