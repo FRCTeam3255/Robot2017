@@ -298,4 +298,54 @@ public class RobotPreferences {
 		}
 		return 0;
 	}
+
+	
+	//NavYawDrive
+	public static double yawDriveTolerance() {
+		if(AutoPreferences.isDebug() == false) {
+			return 1.0;
+		}
+		
+		return Preferences.getInstance().getDouble("YawDriveTolerance", 1.5);
+	}
+
+	public static double maxYawDriveSpeed() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.55;
+		}
+		
+		return Preferences.getInstance().getDouble("MaxYawDriveSpeed", 0.55);
+	}
+
+	public static double minYawDriveSpeed() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
+		return Preferences.getInstance().getDouble("MinYawDriveSpeed", 0.1);
+	}
+
+	public static double navYawDriveP() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.2;
+		}
+		
+		return Preferences.getInstance().getDouble("NavYawDriveP", 0.2);
+	}
+
+	public static double navYawDriveI() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.0;
+		}
+		
+		return Preferences.getInstance().getDouble("NavYawDriveI", 0.0);
+	}
+
+	public static double navYawDriveD() {
+		if(AutoPreferences.isDebug() == false) {
+			return 0.5;
+		}
+		
+		return Preferences.getInstance().getDouble("NavYawDriveD", 0.5);
+	}
 }

@@ -35,22 +35,22 @@ public class DriveStraightDistance extends Command {
     	Robot.drivetrainDistancePID.setSetpoint(distance);
     	Robot.drivetrainDistancePID.setRawTolerance(RobotPreferences.distanceTolerance());
     	Robot.drivetrainDistancePID.enable();
-    	Robot.navYawPID.setSetpoint(0.0);
-    	Robot.navYawPID.enable();
+    	Robot.navYawPIDDrive.setSetpoint(0.0);
+    	Robot.navYawPIDDrive.enable();
     	
     	expireTime = timeSinceInitialized() + 5.0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(Robot.drivetrainDistancePID.getOutput(), Robot.navYawPID.getOutput());
+    	Robot.drivetrain.arcadeDrive(Robot.drivetrainDistancePID.getOutput(), Robot.navYawPIDDrive.getOutput());
     	
     	if(AutoPreferences.isDebug()) {
 	    	if (Robot.drivetrainDistancePID.onRawTarget()) {
 	    		System.err.println("Distance Met");
 	    	}
 	    	
-	    	if (Robot.navYawPID.onRawTarget()) {
+	    	if (Robot.navYawPIDDrive.onRawTarget()) {
 	    		System.err.println("Rotation Met");
 	    	}
     	}
@@ -65,7 +65,7 @@ public class DriveStraightDistance extends Command {
     		return true;
     	}
     	//taking the absolute value of the encoder distance and compares it to user input distance
-        return (Robot.drivetrainDistancePID.onRawTarget() && Robot.navYawPID.onRawTarget());
+        return (Robot.drivetrainDistancePID.onRawTarget() && Robot.navYawPIDDrive.onRawTarget());
     }
 
     // Called once after isFinished returns true
@@ -73,7 +73,7 @@ public class DriveStraightDistance extends Command {
     	Robot.telemetry.setAutonomousStatus("Finished " + commandName);
 
     	Robot.drivetrainDistancePID.disable();
-    	Robot.navYawPID.disable();
+    	Robot.navYawPIDDrive.disable();
     	
     	Robot.drivetrain.arcadeDrive(0.0, 0.0);
     }
