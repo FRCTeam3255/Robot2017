@@ -61,9 +61,14 @@ public class DriveStraightDistanceSpeed extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	double timeNow = timeSinceInitialized();
-		System.err.println("expire=" + expireTime + " timeNow=" + timeNow);
+    	if(AutoPreferences.isDebug()) {
+			System.err.println("expire=" + expireTime + " timeNow=" + timeNow);
+		}
+		
     	if(timeNow >= expireTime) {
-    		System.err.println("TimedOut");
+    		if(AutoPreferences.isDebug()) {
+    			System.err.println("TimedOut");
+    		}
     		return true;
     	}
     	//taking the absolute value of the encoder distance and compares it to user input distance
