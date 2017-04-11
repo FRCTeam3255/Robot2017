@@ -12,6 +12,7 @@ public class DriveAccurateRotate extends Command {
 
 	double yaw;
 	String commandName;
+//	private double expireTime;
 	
     public DriveAccurateRotate(String name, double degrees) {
         // Use requires() here to declare subsystem dependencies
@@ -35,6 +36,8 @@ public class DriveAccurateRotate extends Command {
     	Robot.navYawPID.setRawTolerance(RobotPreferences.yawTolerance());
     	
     	Robot.navYawPID.enable();
+    	
+//    	expireTime = timeSinceInitialized() + 5.0;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,6 +48,18 @@ public class DriveAccurateRotate extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	boolean onTarget = Robot.navYawPID.onRawTarget();
+    	
+//    	double timeNow = timeSinceInitialized();
+//    	if(AutoPreferences.isDebug()) {
+//			System.err.println("expire=" + expireTime + " timeNow=" + timeNow);
+//		}
+//    	
+//    	if(timeNow >= expireTime) {
+//    		if(AutoPreferences.isDebug()) {
+//    			System.err.println("TimedOut");
+//    		}
+//    		return true;
+//    	}
     	
     	if(onTarget) {
         	Robot.drivetrain.arcadeDrive(0.0, 0.0);    		
