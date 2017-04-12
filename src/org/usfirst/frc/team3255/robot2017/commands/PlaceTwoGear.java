@@ -122,20 +122,20 @@ public class PlaceTwoGear extends CommandGroup {
     	addSequential(new DriveStraightDistance("TwoGearD1", autoTwoGearD1()));
     	addSequential(new DoDelay(autoTwoGearDelay()));
     	addSequential(new GearDeployToPeg());
-    	addSequential(new DoDelay(autoTwoGearDelay()));
+    	addParallel(new DoDelay(autoTwoGearDelay()));
     	addSequential(new DriveStraightDistance("TwoGearD2", autoTwoGearD2()));
-    	addSequential(new GearRetract());
+//    	addSequential(new GearRetract());
     	addSequential(new DriveAccurateRotate("TwoGearT1", autoTwoGearTurn()));
-    	addSequential(new GearPickupFromFloor());
+    	addParallel(new GearPickupFromFloor());
     	addSequential(new DriveStraightDistance("TwoGearD3", autoTwoGearD3()));
-    	addSequential(new DoDelay(autoTwoGearDelay()));
-    	addSequential(new GearRetract());
+    	addParallel(new DoDelay(autoTwoGearDelay()));
+    	addParallel(new GearRetract());
     	//reverse
     	addSequential(new DriveStraightDistance("RevTwoGearD3", -autoTwoGearD3()));
     	addSequential(new DriveAccurateRotate("RevTwoGearT1", -autoTwoGearTurn()));
-    	addSequential(new DriveStraightDistance("TwoGearD4", autoTwoGearD4()));
+    	addSequential(new DriveStraightDistanceSpeed("TwoGearD4", autoTwoGearD4(), 0.7));
     	addSequential(new GearDeployToPeg());
-    	addSequential(new DoDelay(autoTwoGearDelay()));
+    	addParallel(new DoDelay(autoTwoGearDelay()));
     	addSequential(new DriveDistance("Backup", 12.0));
     	addSequential(new GearRetract());
     }
