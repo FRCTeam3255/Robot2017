@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3255.robot2017.commands;
 
+import org.usfirst.frc.team3255.robot2017.AutoPreferences;
 import org.usfirst.frc.team3255.robot2017.Robot;
 import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
@@ -12,7 +13,7 @@ public class DriveAccurateRotate extends Command {
 
 	double yaw;
 	String commandName;
-//	private double expireTime;
+	private double expireTime;
 	
     public DriveAccurateRotate(String name, double degrees) {
         // Use requires() here to declare subsystem dependencies
@@ -37,7 +38,7 @@ public class DriveAccurateRotate extends Command {
     	
     	Robot.navYawPID.enable();
     	
-//    	expireTime = timeSinceInitialized() + 5.0;
+    	expireTime = timeSinceInitialized() + 3.5;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -49,22 +50,21 @@ public class DriveAccurateRotate extends Command {
     protected boolean isFinished() {
     	boolean onTarget = Robot.navYawPID.onRawTarget();
     	
-//    	double timeNow = timeSinceInitialized();
-//    	if(AutoPreferences.isDebug()) {
-//			System.err.println("expire=" + expireTime + " timeNow=" + timeNow);
-//		}
-//    	
-//    	if(timeNow >= expireTime) {
-//    		if(AutoPreferences.isDebug()) {
-//    			System.err.println("TimedOut");
-//    		}
-//    		return true;
-//    	}
+    	double timeNow = timeSinceInitialized();
+    	if(AutoPreferences.isDebug()) {
+			System.err.println("expire=" + expireTime + " timeNow=" + timeNow);
+		}
+   	
+    	if(timeNow >= expireTime) {
+    		if(AutoPreferences.isDebug()) {
+    			System.err.println("TimedOut");
+    		}
+    		return true;
+    	}
     	
     	if(onTarget) {
         	Robot.drivetrain.arcadeDrive(0.0, 0.0);    		
     	}
-    	
         return onTarget;
     }
 
