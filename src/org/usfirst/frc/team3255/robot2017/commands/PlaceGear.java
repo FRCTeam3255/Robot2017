@@ -113,7 +113,7 @@ public class PlaceGear extends CommandGroup {
 			return 0.0;
 		}
 		
-		return 1.0;
+		return 0.0;
 	}
 	
     public PlaceGear() {

@@ -40,7 +40,7 @@ public class DriveStraightDistanceSpeed extends Command {
     	Robot.navYawPID.setSetpoint(0.0);
     	Robot.navYawPID.enable();
     	
-    	expireTime = timeSinceInitialized() + 5.0;
+    	expireTime = timeSinceInitialized() + 4.0;
     }
 
     // Called repeatedly when this Command is scheduled to run
