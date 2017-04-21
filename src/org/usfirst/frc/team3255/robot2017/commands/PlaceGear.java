@@ -34,7 +34,7 @@ public class PlaceGear extends CommandGroup {
 		}
 		
 		if(lane == 3) {
-			distance = -75.0;
+			distance = -68.0;
 		}
 
 		return distance;
@@ -59,7 +59,7 @@ public class PlaceGear extends CommandGroup {
 				angle = -57;
 			}
 			else if(lane == 3) {
-				angle = 64.0;
+				angle = 58.0;
 			}
 		}
 		else {
@@ -67,7 +67,7 @@ public class PlaceGear extends CommandGroup {
 				angle = 57;
 			}
 			else if(lane == 3) {
-				angle = -60;
+				angle = -58.0;
 			}			
 		}
 		
@@ -98,7 +98,7 @@ public class PlaceGear extends CommandGroup {
 		}
 		
 		if(lane == 3) {
-			distance = -66.0;
+			distance = -64.0;
 		}
 
 		return distance;
@@ -121,7 +121,7 @@ public class PlaceGear extends CommandGroup {
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveAccurateRotate("GearTurn", autoGearTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveStraightDistanceSpeed("GearD2", autoGearD2(), 0.5));
+    	addSequential(new DriveStraightDistanceSpeed("GearD2", autoGearD2(), 0.65));
     	addSequential(new DoDelay(autoGearDelay()));
     	addSequential(new PlaceGearBackup());
     	addSequential(new GearRetract());

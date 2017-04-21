@@ -40,14 +40,14 @@ public class DriveStraightDistanceSpeed extends Command {
     	Robot.navYawPID.setSetpoint(0.0);
     	Robot.navYawPID.enable();
     	
-    	expireTime = timeSinceInitialized() + 4.0;
+    	expireTime = timeSinceInitialized() + 7.0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.drivetrain.arcadeDrive(Robot.drivetrainDistancePID.getOutput(), Robot.navYawPID.getOutput());
     	
-    	if(AutoPreferences.isDebug()) {
+//    	if(AutoPreferences.isDebug()) {
 	    	if (Robot.drivetrainDistancePID.onRawTarget()) {
 	    		System.out.println("Distance Met");
 	    	}
@@ -55,7 +55,7 @@ public class DriveStraightDistanceSpeed extends Command {
 	    	if (Robot.navYawPID.onRawTarget()) {
 	    		System.out.println("Rotation Met");
 	    	}
-    	}
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -66,9 +66,9 @@ public class DriveStraightDistanceSpeed extends Command {
 		}
 		
     	if(timeNow >= expireTime) {
-    		if(AutoPreferences.isDebug()) {
+//    		if(AutoPreferences.isDebug()) {
     			System.err.println("TimedOut");
-    		}
+//    		}
     		return true;
     	}
     	//taking the absolute value of the encoder distance and compares it to user input distance

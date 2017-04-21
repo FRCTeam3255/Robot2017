@@ -38,7 +38,7 @@ public class DriveAccurateRotate extends Command {
     	
     	Robot.navYawPID.enable();
     	
-    	expireTime = timeSinceInitialized() + 3.5;
+    	expireTime = timeSinceInitialized() + 2.5;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -56,9 +56,9 @@ public class DriveAccurateRotate extends Command {
 		}
    	
     	if(timeNow >= expireTime) {
-    		if(AutoPreferences.isDebug()) {
+//    		if(AutoPreferences.isDebug()) {
     			System.err.println("TimedOut");
-    		}
+//    		}
     		return true;
     	}
     	

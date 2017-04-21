@@ -55,10 +55,10 @@ public class RobotPreferences {
 	//Navigation
 	public static double navYawP() {
 		if(AutoPreferences.isDebug() == false) {
-			return 0.2;
+			return 0.1;
 		}
 		
-		return Preferences.getInstance().getDouble("NavYawP", 0.2);
+		return Preferences.getInstance().getDouble("NavYawP", 0.4);
 	}
 
 	public static double navYawI() {
@@ -66,7 +66,7 @@ public class RobotPreferences {
 			return 0.0;
 		}
 		
-		return Preferences.getInstance().getDouble("NavYawI", 0.0);
+		return Preferences.getInstance().getDouble("NavYawI", 0.2);
 	}
 
 	public static double navYawD() {
@@ -79,7 +79,7 @@ public class RobotPreferences {
 	
 	public static double yawTolerance() {
 		if(AutoPreferences.isDebug() == false) {
-			return 1.0;
+			return 1.5;
 		}
 		
 		return Preferences.getInstance().getDouble("YawTolerance", 1.5);
