@@ -94,11 +94,11 @@ public class PlaceGear extends CommandGroup {
 		}
 		
 		if(lane == 2) {
-			distance = -78.0;
+			distance = -80.0;
 		}
 		
 		if(lane == 3) {
-			distance = -64.0;
+			distance = -69.0;
 		}
 
 		return distance;
