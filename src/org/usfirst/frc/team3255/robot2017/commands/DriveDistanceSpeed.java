@@ -15,8 +15,6 @@ public class DriveDistanceSpeed extends Command {
 	double maxSpeed;
 	
 	public DriveDistanceSpeed(String name, double inches, double speed) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.drivetrain);
     	requires(Robot.drivetrainDistancePID);
     	

@@ -14,8 +14,9 @@ public class DriveRotate extends Command {
 	String commandName;
 	
     public DriveRotate(String name, double degrees) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	// We use this command for rotations that do not have to be precise,
+    	// such as CrossLine in autonomous. Uses the same PID values as other
+    	// accurate commands, but the yaw tolerance is multiplied by five.
     	requires(Robot.drivetrain);
     	requires(Robot.navYawPID);
     	

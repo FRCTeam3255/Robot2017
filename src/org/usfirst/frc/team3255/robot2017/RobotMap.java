@@ -17,12 +17,11 @@ public class RobotMap {
 	public static final int SHOOTER_RIGHT_TALON = 10;
 	
 	public static final int COLLECTOR_LOAD_TALON = 6;
-//	public static final int COLLECTOR_INTAKE_TALON = 7;
+	
+	public static final int GEAR_COLLECTOR_TALON = 7;
 	
 	public static final int CLIMBER_LEFT_TALON = 8;
 	public static final int CLIMBER_RIGHT_TALON = 9;
-
-	public static final int GEAR_COLLECTOR_TALON = 7;
 	
 	//DigitalInputs
 	public static final int CLIMBER_ENABLE_SWITCH = 0;

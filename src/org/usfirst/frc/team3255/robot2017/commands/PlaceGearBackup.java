@@ -11,6 +11,5 @@ public class PlaceGearBackup extends CommandGroup {
     	addSequential(new GearDeployToPeg());
     	addSequential(new DoDelay(0.0));
     	addSequential(new DriveDistanceSpeed("Backup", 12.0, 0.5));
-//    	addSequential(new GearRetract());
     }
 }

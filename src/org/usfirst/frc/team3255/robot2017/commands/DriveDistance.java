@@ -14,8 +14,9 @@ public class DriveDistance extends Command {
 	String commandName;
 	
 	public DriveDistance(String name, double inches) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        // We use this command for distances that did not have to be precise,
+		// such as CrossLine in autonomous. Uses the same PID values as other
+		// accurate commands, but the distance tolerance is multiplied by two.
     	requires(Robot.drivetrain);
     	requires(Robot.drivetrainDistancePID);
     	

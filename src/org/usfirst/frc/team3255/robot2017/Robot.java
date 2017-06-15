@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team3255.robot2017;
 
 import org.usfirst.frc.team3255.robot2017.commands.Autonomous;
@@ -106,13 +105,6 @@ public class Robot extends IterativeRobot {
 		
 		autonomousCommand = new Autonomous();
 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) { 
 			autonomousCommand.start();
@@ -138,7 +130,6 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 			autonomousCommand = null;
 		}
-		//TODO add reset encoders to teleopInit
 	}
 
 	/**

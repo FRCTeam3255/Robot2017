@@ -11,30 +11,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	//// CREATING BUTTONS
-	// Button button = new JoystickButton(stick, buttonNumber);
-
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
-
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenPressed(new ExampleCommand());
-
-	// Run the command while the button is being held down and interrupt it once
-	// the button is released.
-	// button.whileHeld(new ExampleCommand());
-
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
-	// button.whenReleased(new ExampleCommand());
 	
 	//create Joysticks
 	public Joystick driverStick = new Joystick(RobotMap.JOYSTICK_DRIVER);
 	public Joystick shooterStick = new Joystick(RobotMap.JOYSTICK_SHOOTER);
 	
-//	ShooterStick
+	//create Buttons
+	//ShooterStick
 	Button S1 = new JoystickButton(shooterStick, 1);
 	Button S2 = new JoystickButton(shooterStick, 2);
 	Button S3 = new JoystickButton(shooterStick, 3);
@@ -48,7 +31,7 @@ public class OI {
 	Button S12 = new JoystickButton(shooterStick, 12);
 	
 	
-//	DriverStick
+	//DriverStick
 	Button D1 = new JoystickButton(driverStick, 1);
 	Button D2 = new JoystickButton(driverStick, 2);
 	Button D3 = new JoystickButton(driverStick, 3);
@@ -77,15 +60,12 @@ public class OI {
 		S9.whenReleased(new ClimberStop());
 		S10.whenPressed(new ClimbHighSpeed());
 		S10.whenReleased(new ClimberStop());
-		// S10 is shooter lowSpeed while held - see SetShooterSpeed
 		
 		//DriverStick
 		D5.whenPressed(new DriveShiftDown());
 		D6.whenPressed(new DriveShiftUp());
 		D7.whenPressed(new DriveShiftDown());
 		D8.whenPressed(new DriveShiftUp());
-		//D9.whenPressed(new VisionBackCamera());
-		//D10.whenPressed(new VisionFrontCamera());
 
 	}
 }

@@ -17,6 +17,7 @@ public class PlaceGear extends CommandGroup {
 		
 		int lane = AutoPreferences.getLane();
 		
+		//if there is no lane selected or the "do gear" button is not pressed, return 0.0 for Distance 1
 		if((AutoPreferences.doGear() == false) || (lane == 0)) {
 			return 0.0;
 		}
@@ -24,9 +25,7 @@ public class PlaceGear extends CommandGroup {
 		double distance = 0.0;
 		
 		if(lane == 1) {
-//			SD Values
 			distance = -60.2;
-//			distance = -53.0;
 		}
 		
 		if(lane == 2) {
@@ -88,9 +87,7 @@ public class PlaceGear extends CommandGroup {
 		double distance = 0.0;
 		
 		if(lane == 1) {
-	//		SD Values
 			distance = -81;
-	//		distance = -77.0;
 		}
 		
 		if(lane == 2) {
