@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class PlaceGear extends CommandGroup {
+public class AutoPlaceGear extends CommandGroup {
 
 	public double autoGearD1() {
 		if(AutoPreferences.isDebug()) {
@@ -113,8 +113,8 @@ public class PlaceGear extends CommandGroup {
 		return 0.0;
 	}
 	
-    public PlaceGear() {
-    	addSequential(new DriveStraightDistance("GearD1", autoGearD1()));
+    public AutoPlaceGear() {
+    	addSequential(new DriveStraightDistanceSpeed("GearD1", autoGearD1(), 0.7));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveAccurateRotate("GearTurn", autoGearTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));

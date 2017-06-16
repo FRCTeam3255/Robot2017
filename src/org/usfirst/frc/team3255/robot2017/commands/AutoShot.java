@@ -171,11 +171,11 @@ public class AutoShot extends CommandGroup {
 	}
 	
     public AutoShot() {
-    	addSequential(new DriveStraightDistance("ShotD1", autoShotD1()));
+    	addSequential(new DriveStraightDistanceSpeed("ShotD1", autoShotD1(), 0.7));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
     	addSequential(new DriveAccurateRotate("ShotTurn", autoShotTurn()));
     	addSequential(new DoDelay(RobotPreferences.autoDoDelay()));
-    	addSequential(new DriveStraightDistance("ShotD2", autoShotD2()));
+    	addSequential(new DriveStraightDistanceSpeed("ShotD2", autoShotD2(), 0.7));
     	addSequential(new CollectorShoot());
     	addSequential(new DoDelay(autoShotTime()));
     	addSequential(new CollectorStop());

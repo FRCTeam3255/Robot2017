@@ -15,9 +15,8 @@ public class Autonomous extends CommandGroup {
     	}
     	else{
     	addSequential(new DriveShiftUp());
-    	addSequential(new PlaceGear());
+    	addSequential(new AutoPlaceGear());
     	addSequential(new AutoShot());
-    	addSequential(new CrossLine());
     	}
     }
 }

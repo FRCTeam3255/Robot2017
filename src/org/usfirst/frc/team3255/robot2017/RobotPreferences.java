@@ -147,7 +147,7 @@ public class RobotPreferences {
 			return 0.7;
 		}
 		
-		return Preferences.getInstance().getDouble("MaxMoveSpeed", 0.8);
+		return Preferences.getInstance().getDouble("MaxMoveSpeed", 0.7);
 	}
 
 	public static double minMoveSpeed() {
@@ -257,10 +257,10 @@ public class RobotPreferences {
 	
 	public static int targetCount() {
 		if(AutoPreferences.isDebug() == false) {
-			return 5;
+			return 10;
 		}
 		
-		return Preferences.getInstance().getInt("TargetCount", 5);
+		return Preferences.getInstance().getInt("TargetCount", 10);
 	}
 
 	//Two Gear Auto

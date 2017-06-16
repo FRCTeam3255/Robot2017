@@ -1,11 +1,10 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.commands.AutoShot;
-import org.usfirst.frc.team3255.robot2017.commands.CrossLine;
 import org.usfirst.frc.team3255.robot2017.commands.DriveResetEncoder;
-import org.usfirst.frc.team3255.robot2017.commands.DriveStraightDistance;
+import org.usfirst.frc.team3255.robot2017.commands.DriveStraightDistanceSpeed;
 import org.usfirst.frc.team3255.robot2017.commands.NavigationResetYaw;
-import org.usfirst.frc.team3255.robot2017.commands.PlaceGear;
+import org.usfirst.frc.team3255.robot2017.commands.AutoPlaceGear;
 import org.usfirst.frc.team3255.robot2017.AutoPreferences;
 import org.usfirst.frc.team3255.robot2017.Robot;
 import org.usfirst.frc.team3255.robot2017.RobotPreferences;
@@ -25,10 +24,9 @@ public class Telemetry extends Subsystem {
 		//Command buttons
 		SmartDashboard.putData("Drive Reset Encoders", new DriveResetEncoder());
 		SmartDashboard.putData("Reset Yaw", new NavigationResetYaw());
-		SmartDashboard.putData("Drive Distance", new DriveStraightDistance("Debug Straight Distance", RobotPreferences.driveDistance()));
-		SmartDashboard.putData("Place Gear", new PlaceGear());
+		SmartDashboard.putData("Drive Distance", new DriveStraightDistanceSpeed("Debug Straight Distance", RobotPreferences.driveDistance(), 0.7));
+		SmartDashboard.putData("Place Gear", new AutoPlaceGear());
 		SmartDashboard.putData("Auto Shot", new AutoShot());
-		SmartDashboard.putData("Cross Line", new CrossLine());
 	}
 	
 	public void update() {		
