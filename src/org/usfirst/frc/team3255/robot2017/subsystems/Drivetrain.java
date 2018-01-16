@@ -50,6 +50,9 @@ public class Drivetrain extends Subsystem {
 		rightFrontTalon.setSafetyEnabled(false);
 		rightBackTalon.setSafetyEnabled(false);
 		
+		leftBackTalon.follow(leftFrontTalon);
+		rightBackTalon.follow(rightFrontTalon);
+		
 		//Solenoids
 		driveSolenoid = new DoubleSolenoid(RobotMap.DRIVETRAIN_SHIFT_UP, RobotMap.DRIVETRAIN_SHIFT_DOWN);
 		
