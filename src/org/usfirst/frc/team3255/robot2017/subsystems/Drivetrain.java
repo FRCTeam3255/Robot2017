@@ -4,13 +4,14 @@ import org.usfirst.frc.team3255.robot2017.RobotMap;
 import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 import org.usfirst.frc.team3255.robot2017.commands.DriveArcade;
 
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  *
@@ -21,28 +22,28 @@ public class Drivetrain extends Subsystem {
 		
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private CANTalon leftFrontTalon = null;
-	private CANTalon leftBackTalon = null;
-	private CANTalon rightFrontTalon = null;
-	private CANTalon rightBackTalon = null;
+	private WPI_TalonSRX leftFrontTalon = null;
+	private WPI_TalonSRX leftBackTalon = null;
+	private WPI_TalonSRX rightFrontTalon = null;
+	private WPI_TalonSRX rightBackTalon = null;
 	
 	private DoubleSolenoid driveSolenoid = null;
 	
 	private Encoder driveEncoder = null;
 	
-	private RobotDrive robotDrive = null;
+	private DifferentialDrive differentialDrive = null;
 	
 	public Drivetrain() {
 		//CANTalons
-    	leftFrontTalon = new CANTalon(RobotMap.DRIVETRAIN_LEFT_FRONT_TALON);
-		leftBackTalon = new CANTalon(RobotMap.DRIVETRAIN_LEFT_BACK_TALON);
-		rightFrontTalon = new CANTalon(RobotMap.DRIVETRAIN_RIGHT_FRONT_TALON);
-		rightBackTalon = new CANTalon(RobotMap.DRIVETRAIN_RIGHT_BACK_TALON);
+    	leftFrontTalon = new WPI_TalonSRX(RobotMap.DRIVETRAIN_LEFT_FRONT_TALON);
+		leftBackTalon = new WPI_TalonSRX(RobotMap.DRIVETRAIN_LEFT_BACK_TALON);
+		rightFrontTalon = new WPI_TalonSRX(RobotMap.DRIVETRAIN_RIGHT_FRONT_TALON);
+		rightBackTalon = new WPI_TalonSRX(RobotMap.DRIVETRAIN_RIGHT_BACK_TALON);
 		
-		leftFrontTalon.enableBrakeMode(true);
-		leftBackTalon.enableBrakeMode(true);
-		rightFrontTalon.enableBrakeMode(true);
-		rightBackTalon.enableBrakeMode(true);
+		leftFrontTalon.setNeutralMode(NeutralMode.Brake);
+		leftBackTalon.setNeutralMode(NeutralMode.Brake);
+		rightFrontTalon.setNeutralMode(NeutralMode.Brake);
+		rightBackTalon.setNeutralMode(NeutralMode.Brake);
 		
 		leftFrontTalon.setSafetyEnabled(false);
 		leftBackTalon.setSafetyEnabled(false);
@@ -56,13 +57,13 @@ public class Drivetrain extends Subsystem {
 		driveEncoder = new Encoder(RobotMap.DRIVETRAIN_ENCODER_A, RobotMap.DRIVETRAIN_ENCODER_B);
 		
 		//RobotDrive
-		robotDrive = new RobotDrive(leftFrontTalon, leftBackTalon, rightFrontTalon, rightBackTalon);
+		differentialDrive = new DifferentialDrive(leftFrontTalon, rightFrontTalon);
 		
-		robotDrive.setSafetyEnabled(false);
+		differentialDrive.setSafetyEnabled(false);
 	}
 	
 	public void arcadeDrive(double moveSpeed, double rotateSpeed){
-		robotDrive.arcadeDrive(-moveSpeed, rotateSpeed);
+		differentialDrive.arcadeDrive(-moveSpeed, rotateSpeed);
 	}
 	
 	//Solenoids

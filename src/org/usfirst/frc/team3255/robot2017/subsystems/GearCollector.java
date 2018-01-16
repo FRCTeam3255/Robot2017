@@ -1,7 +1,7 @@
 package org.usfirst.frc.team3255.robot2017.subsystems;
 
 import org.usfirst.frc.team3255.robot2017.RobotMap;
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -14,13 +14,13 @@ public class GearCollector extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	private CANTalon gearTalon = null;
+	private WPI_TalonSRX gearTalon = null;
 	
 	private DoubleSolenoid gearSolenoid = null;
 	
 	public GearCollector() {
 		//CANTalons
-		gearTalon = new CANTalon(RobotMap.GEAR_COLLECTOR_TALON);
+		gearTalon = new WPI_TalonSRX(RobotMap.GEAR_COLLECTOR_TALON);
 		
 		gearTalon.setSafetyEnabled(false);
 		

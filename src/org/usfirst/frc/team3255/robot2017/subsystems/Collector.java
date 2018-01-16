@@ -3,7 +3,8 @@ package org.usfirst.frc.team3255.robot2017.subsystems;
 import org.usfirst.frc.team3255.robot2017.RobotMap;
 import org.usfirst.frc.team3255.robot2017.RobotPreferences;
 
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -16,20 +17,20 @@ public class Collector extends Subsystem {
     // here. Call these from Commands.
 	private boolean collectorOn = false;
 	
-	private CANTalon loadTalon = null;
-	private CANTalon shooterLeftTalon = null;
-	private CANTalon shooterRightTalon = null;
+	private WPI_TalonSRX loadTalon = null;
+	private WPI_TalonSRX shooterLeftTalon = null;
+	private WPI_TalonSRX shooterRightTalon = null;
 	
 	public Collector() {
 		//CANTalons
-		loadTalon = new CANTalon(RobotMap.COLLECTOR_LOAD_TALON);
-		shooterLeftTalon = new CANTalon(RobotMap.SHOOTER_LEFT_TALON);
-		shooterRightTalon = new CANTalon(RobotMap.SHOOTER_RIGHT_TALON);
+		loadTalon = new WPI_TalonSRX(RobotMap.COLLECTOR_LOAD_TALON);
+		shooterLeftTalon = new WPI_TalonSRX(RobotMap.SHOOTER_LEFT_TALON);
+		shooterRightTalon = new WPI_TalonSRX(RobotMap.SHOOTER_RIGHT_TALON);
 		
 		loadTalon.setInverted(true);
 		
-		shooterLeftTalon.enableBrakeMode(false);
-		shooterRightTalon.enableBrakeMode(false);
+		shooterLeftTalon.setNeutralMode(NeutralMode.Brake);
+		shooterRightTalon.setNeutralMode(NeutralMode.Brake);
 		
 		loadTalon.setSafetyEnabled(false);
 		shooterLeftTalon.setSafetyEnabled(false);
